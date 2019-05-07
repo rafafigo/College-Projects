@@ -194,7 +194,7 @@ def palavra(inp):
 
 def e_silaba(string):
     """
-    Verifica se uma string é silaba
+    Verifica se uma string Ã© silaba
     :param string: string a verificar
     :return: Verdadeiro (True) ou Falso (False)
     """
@@ -205,7 +205,7 @@ def e_silaba(string):
 
 def e_monossilabo(string):
     """
-    Verifica se uma string é monossilabo
+    Verifica se uma string Ã© monossilabo
     :param string: a verificar
     :return: Verdadeiro (True) ou Falso (False)
     """
