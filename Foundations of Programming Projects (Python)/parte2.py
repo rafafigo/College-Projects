@@ -1,5 +1,5 @@
 """ Rafael Alexandre Roberto Figueiredo - 90770 - Taguspark """
-from parte1 import e_palavra
+from parte1_madeBy_professor import e_palavra
 from itertools import permutations
 
 """ TAD palavra_potencial """
