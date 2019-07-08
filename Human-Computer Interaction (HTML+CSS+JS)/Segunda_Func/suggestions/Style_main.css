@@ -1,0 +1,22 @@
+#help {
+    margin-bottom: 0;
+    float: right;
+}
+#table {
+    border-spacing: 1.5pc;
+    position: fixed;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#restaurants, #parks, #bars, #monuments {
+    width: 4.5pc;
+}
+
+.name {
+    color: white;
+    font-size: 0.9pc;
+    text-decoration: none;
+}
+
+

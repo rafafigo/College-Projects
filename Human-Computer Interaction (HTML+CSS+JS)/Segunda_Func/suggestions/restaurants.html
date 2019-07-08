@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Restaurants Menu</title>
+		<link rel="stylesheet" href="../Template.css">
+		<link rel="stylesheet" href="Style_suggestions.css">
+        <script src="../Script_template.js"></script>
+        <script src="restaurants.js"></script>
+        <link rel="shortcut icon" href="../../Images/icon.png">
+    </head>
+    <body onload="temp();timeLoad();openT();">
+        <a href="Menu.html">
+            <button id="back" type="button"></button>
+        </a>
+        <a href="../Menu.html">
+            <button id="home"></button>
+        </a>
+        <a href="../Lock.html">
+            <button id="lock" type="button"></button>
+        </a>
+
+        <div id="info"> 
+            <div id="time"></div>
+            <img id="rede" src="../images/Rede.png" align="right">
+            <img id="wifi" src="../images/Wifi.png" align="right">
+        </div>
+        <div id=Screen>
+            <h1 id="title">Restaurants</h1>
+            <img id="help" src="../images/help.png" onclick="helpModalOn()" align="right">
+            <div id="help_mod" class="help_mod">
+                <div class="content_mod" >
+                    <span id="info_mod"> <b>To Lock:</b> Press the top left button; <br> <b>To Go Back:</b> Press the top right button; <br> <b>To Main Menu:</b> Press Bottom right button <br> </span>
+                    <button id="ok_mod" onclick="helpModalOff()">Ok</button>
+                </div>
+            </div>              
+
+            <div id="options"> 
+                <table align="center">
+                    <tr>
+                        <td style="padding: 0.5pc 0.5pc 0.5pc 0.5pc;"> 
+                            <a class="link" onclick="setRestaurant1()" href="Restaurants/Restaurant1.html">
+                                <img class="suggestions" src="../images/restaurant1.png" alt="">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="link" onclick="setRestaurant1()" href="Restaurants/Restaurant1.html">
+                                <span class="description"> Jamie's Italian 
+                                        <br> Rating 
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <br> <span id="time1"> </span>
+                                        <img id="isOpen1" class="opened" src="">
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="space"> <td></td><td></td></tr>
+
+                    <tr>
+                        <td style="padding: 0.5pc 0.5pc 0.5pc 0.5pc;">
+                            <a class="link" onclick="setRestaurant2()" href="Restaurants/Restaurant1.html">
+                                <img class="suggestions" src="../images/restaurant2.png" alt="">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="link" onclick="setRestaurant2()"  href="Restaurants/Restaurant1.html">
+                                <span clas="description"> The Green Affair 
+                                    <br> Rating
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <br> <span id="time2"></span>
+                                    <img id="isOpen2" class="opened" src="">
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="space"> <td></td><td></td></tr>
+
+                    <tr>
+                        <td style="padding: 0.5pc 0.5pc 0.5pc 0.5pc;">
+                            <a class="link" onclick="setRestaurant3()" href="Restaurants/Restaurant1.html">
+                                <img class="suggestions" src="../images/restaurant3.png" alt="">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="link" onclick="setRestaurant3()" href="Restaurants/Restaurant1.html">
+                                <span class="description"> Zero Zero
+                                        <br> Rating 
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/halfStar.png" alt="">
+                                        <br> <span id="time3"></span>
+                                        <img id="isOpen3" class="opened" src="" alt="">
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="space"> <td></td><td></td></tr>
+
+                    <tr>
+                        <td style="padding: 0.5pc 0.5pc 0.5pc 0.5pc;">
+                            <a class="link" onclick="setRestaurant4()" href="Restaurants/Restaurant1.html">
+                                <img class="suggestions" src="../images/restaurant4.png"" alt="">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="link" onclick="setRestaurant4()" href="Restaurants/Restaurant1.html">
+                                <span class="description"> Boa-Bao
+                                    <br> Rating
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/emptyStar.png" alt="">
+                                    <br> <span id="time4"></span>
+                                    <img id="isOpen4" class="opened" src="">
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="space"> <td></td><td></td></tr>
+
+                    <tr>
+                        <td style="padding: 0.5pc 0.5pc 0.5pc 0.5pc;">
+                            <a class="link" onclick="setRestaurant5()" href="Restaurants/Restaurant1.html">
+                                <img class="suggestions" src="../images/restaurant5.png" alt="">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="link" onclick="setRestaurant5()" href="Restaurants/Restaurant1.html">
+                                <span class="description"> Contrabando <br> Rating: 
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/halfStar.png" alt="">
+                                    <img class="stars" src="../images/emptyStar.png" alt="">
+                                    <br> <span id="time5"></span>
+                                    <img id="isOpen5" class="opened" src="">
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="space"> <td></td><td></td></tr>
+
+                    <tr>
+                        <td style="padding: 0.5pc 0.5pc 0.5pc 0.5pc;">
+                            <a class="link" onclick="setRestaurant6()" href="Restaurants/Restaurant1.html">
+                                <img class="suggestions" src="../images/restaurant6.png" alt="">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="link" onclick="setRestaurant6()" href="Restaurants/Restaurant1.html">
+                                <span class="description"> Hamburgueria Portuguesa <br> Rating: 
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/halfStar.png" alt="">
+                                    <img class="stars" src="../images/emptyStar.png" alt="">
+                                    <br> <span id="time6"></span>
+                                    <img id="isOpen6" class="opened" src="">
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="space"> <td></td><td></td></tr>
+
+                    <tr>
+                        <td style="padding: 0.5pc 0.5pc 0.5pc 0.5pc;">
+                            <a class="link" onclick="setRestaurant7()" href="Restaurants/Restaurant1.html">
+                                <img class="suggestions" src="../images/restaurant7.png" alt="">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="link" onclick="setRestaurant7()" href="Restaurants/Restaurant1.html">
+                                <span class="description"> Sea Me 
+                                    <br> Rating
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/emptyStar.png" alt="">
+                                    <img class="stars" src="../images/emptyStar.png" alt="">
+                                    <br> <span id="time7"></span>
+                                    <img id="isOpen7" class="opened" src="">
+                                </span>
+                            </a>
+                        </td>
+                        </tr>
+
+                        <tr class="space"> <td></td><td></td></tr>
+
+                        <tr>
+                            <td style="padding: 0.5pc 0.5pc 0.5pc 0.5pc;">
+                                <a class="link" onclick="setRestaurant8()" href="Restaurants/Restaurant1.html">
+                                    <img class="suggestions" src="../images/restaurant8.png" alt="">
+                                </a>
+                            </td>
+                            <td>
+                                <a class="link" onclick="setRestaurant8()" href="Restaurants/Restaurant1.html">
+                                    <span class="description"> Nómada <br> Rating: 
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/emptyStar.png" alt="">
+                                        <img class="stars" src="../images/emptyStar.png" alt="">
+                                        <br> <span id="time8"></span>
+                                        <img id="isOpen8" class="opened" src="">
+                                    </span>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr class="space"> <td></td><td></td></tr>
+
+                        <tr>
+                            <td style="padding: 0.5pc 0.5pc 0.5pc 0.5pc;">
+                                <a class="link" onclick="setRestaurant9()" href="Restaurants/Restaurant1.html">
+                                    <img class="suggestions" src="../images/restaurant9.png" alt="">
+                                </a>
+                            </td>
+                            <td>
+                                <a class="link" onclick="setRestaurant9()" href="Restaurants/Restaurant1.html">
+                                    <span class="description"> Mez Cais LX <br> Rating: 
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/halfStar.png" alt="">
+                                        <img class="stars" src="../images/emptyStar.png" alt="">
+                                        <img class="stars" src="../images/emptyStar.png" alt="">
+                                        <br> <span id="time9"></span>
+                                        <img id="isOpen9" class="opened" src="" alt="">
+                                    </span>
+                                </a>
+                            </td>
+                        </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,123 @@
+table {
+    border-collapse: collapse;
+}
+
+#options {
+    border-color: white;
+    border-style: dashed;
+    line-height: 1.5pc;
+    width: 18,3pc;
+    height: 8.5pc;
+    margin-top: 2.15pc;
+}
+
+#title {
+    position: fixed;
+    width: 16.04pc;
+    margin-top: 0.75pc;
+    float: left;
+    font-size: 1.5pc;
+    font-weight: bold;
+}
+
+#desc {
+    position:fixed;
+    top: 5.5pc;
+    left: 1pc;
+    font-size: large;
+
+}
+
+#transportType {
+    position:fixed;
+    top: 7.5pc;
+    right: 1.5pc;
+    width: 5pc;
+}
+
+#shareTitle {
+    position: fixed;
+    top: 5.2pc;
+    left: 25%;
+    font-size: large;
+}
+.suggestions{
+    width: 8pc;
+    height: 6pc;
+}
+#no {
+	background-color:#f24537;
+	border-radius:6px;
+	border:1px solid #d02718;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+    text-shadow:0px 1px 0px #810e05;
+}
+
+#no:hover {
+	background-color:#c62d1f;
+}
+
+#yes {
+	background-color:#38bd49;
+	border-radius:6px;
+	border:1px solid #39830e;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+    text-shadow:0px 1px 0px #085722;
+}
+
+#yes:hover {
+	background-color:#399431;
+}
+
+.modal {
+	display: none;
+	position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 18.54pc;
+    height: 18.54pc;
+	background-color: rgba(0,0,0,0.5);
+
+}
+
+.modal_content {
+	margin: 35% auto;
+    background-color: #f4f4f4;
+    color: black;
+	padding: 20px;
+    width:70%;
+}
+
+#modal_ok{
+    background-color:#dcdcdc;
+    border-radius:6px;
+    border:1px solid #8f8e8e;
+    display:inline-block;
+    cursor:pointer;
+    color: black;
+    font-family:Arial;
+    font-size:15px;
+    padding:6px 15px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #636060;
+    
+}
+
+#modal_ok:hover {
+    background-color: rgb(177, 174, 174);
+}

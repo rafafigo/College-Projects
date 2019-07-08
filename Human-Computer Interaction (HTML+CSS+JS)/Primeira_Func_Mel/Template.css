@@ -1,0 +1,162 @@
+html {
+	overflow: hidden;
+    background-color: rgb(253, 242, 228);;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-style: solid;
+    width: 18.54pc;
+    height: 18.54pc;
+    border-color: black;
+    background-color:#303030;
+    color: white;
+}
+#Screen {
+    animation: fadein 0.5s;
+}
+
+
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+#lock {
+    position: fixed;
+    top: 20%;
+    right: -3.75%;
+    transform: translate(50%, -50%);
+    border-style: solid;
+    width: 7.5%;
+    height: 15%;
+    border-color: black;
+    background-color: rgb(156, 152, 152);
+    outline: none;
+    
+}
+#back {
+    position: fixed;
+    top: 20%;
+    left: -3.75%;
+    transform: translate(-50%, -50%);
+    border-style: solid;
+    width: 7.5%;
+    height: 15%;
+    border-color: black;
+    background-color: rgb(156, 152, 152);
+    outline: none;
+    
+}
+
+#home {
+    position: fixed;
+    bottom: 20%;
+    left: -3.75%;
+    transform: translate(-50%, 50%);
+    border-style: solid;
+    width: 7.5%;
+    height: 15%;
+    border-color: black;
+    background-color: rgb(156, 152, 152);
+    outline: none;
+}
+
+#home:hover, #back:hover, #lock:hover {
+    background-color: #817f7f;
+}
+
+#info_mod {
+    font-size: 1pc;
+}
+
+#info {
+    height: 7.5%;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    background-color: RGB(211, 211, 211,0.5);
+}
+
+#time {
+    margin-left: 0.2pc;
+    margin-top: 0.2pc;
+    float:left;
+}
+
+#temp {
+    position: fixed;
+    left: 47%;
+    transform: translate(-50%, 0);
+    margin-left: 0.2pc;
+    margin-top: 0.2pc;
+    float: left;
+    text-align: center;
+    height: 1pc;
+}
+
+#rede, #wifi {
+    margin-right: 0.2pc;
+    margin-top: 0.2pc;
+    float: right;
+    height: 1pc;
+}
+
+#help {
+    margin-right: 0.2pc;
+    margin-top: 0.2pc;
+    margin-bottom: 0.35pc;
+    float: right;
+    height: 2.5pc;
+    width: 2.5pc
+
+}
+
+.help_mod {
+	display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 18.54pc;
+    height: 18.54pc;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1;
+
+}
+
+.content_mod {
+	margin: 20% auto;
+    background-color: #f4f4f4;
+    color:black;
+	padding: 20px;
+    width: 75%;
+}
+
+#ok_mod{
+    margin:auto;
+    display:block;
+    background-color:#dcdcdc;
+    border-radius:6px;
+    border:1px solid #8f8e8e;
+    cursor:pointer;
+    color: black;
+    font-family:Arial;
+    font-size:15px;
+    padding:6px 15px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #636060;
+    
+}
+
+#ok_mod:hover {
+    background-color: rgb(177, 174, 174);
+}
+

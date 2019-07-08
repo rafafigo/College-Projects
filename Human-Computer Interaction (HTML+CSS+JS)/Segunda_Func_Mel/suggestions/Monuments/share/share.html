@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Share</title>
+		<link rel="stylesheet" href="../../../Template.css">
+		<link rel="stylesheet" href="Style_share.css">
+        <script src="../../../Script_template.js"></script>
+        <script src="Script_share.js"></script>
+        <link rel="shortcut icon" href="../../../../Images/icon.png">
+    </head>
+    <body onload="temp();timeLoad();rest();">
+        <a id="backl" href="">
+            <button id="back" type="button"></button>
+        </a>
+        <a href="../../../Menu.html">
+            <button id="home"></button>
+        </a>
+        <a href="../../../Lock.html">
+            <button id="lock" type="button"></button>
+        </a>
+
+        <div id="info"> 
+            <div id="time"></div>
+            <img id="rede" src="../../../images/Rede.png" align="right">
+            <img id="wifi" src="../../../images/Wifi.png" align="right">
+        </div>
+        <div id=Screen>
+            <p id="title" align="center">Preview </p>
+            <img id="help" src="../../../images/help.png" onclick="helpModalOn()" align="right">
+            <div id="help_mod" class="help_mod">
+                <div class="content_mod" >
+                    <span id="info_mod"> <b>To Lock:</b> Press the top left button; <br> <b>To Go Back:</b> Press the top right button; <br> <b>To Main Menu:</b> Press bottom right button. <br> </span>
+                    <button id="ok_mod" onclick="helpModalOff()">Ok</button>
+                </div>
+            </div>     
+            <br>
+            <div id="options"> 
+                <div align="center">I am going to:</div>
+                <table align="center">
+                    <tr>
+                        <td style="padding: 0.5pc 0.5pc 0pc 0.5pc;">
+                            <img id=restImg class="suggestions" src="" alt="">
+                        </td>
+                        <td>                            
+                            <span class="description"> <span id="desc"></span> 
+                                <img id="star1" class="stars" src="" alt="">
+                                <img id="star2" class="stars" src="" alt="">
+                                <img id="star3" class="stars" src="" alt="">
+                                <img id="star4" class="stars" src="" alt="">
+                                <img id="star5" class="stars" src="" alt="">
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div align="center" style="line-height: 2pc;">
+                Are you sure you want to share this? <br>
+                <button id="no" onclick="noModal()"> No </button>
+                &emsp;
+                <button id="yes" onclick="yesModal()">Yes</button>
+            </div>
+            <div id="modal_id" class="modal">
+                <div class="modal_content" align="center">
+                    <p id="modal_info"></p>
+                    <a id="modal_link" href="../Monument.html">
+                        <button id="modal_ok">Ok</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

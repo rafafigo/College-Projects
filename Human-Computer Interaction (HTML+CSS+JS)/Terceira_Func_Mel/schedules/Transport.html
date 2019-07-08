@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Monuments Menu</title>
+		<link rel="stylesheet" href="../Template.css">
+		<link rel="stylesheet" href="Transport.css">
+        <script src="../Script_template.js"></script>
+        <script src="Transport.js"></script>
+        <link rel="shortcut icon" href="../../Images/icon.png">
+    </head>
+    <body onload="temp();timeLoad();transportType();">
+        <a href="Transports.html">
+            <button id="back" type="button"></button>
+        </a>
+        <a href="../Menu.html">
+            <button id="home"></button>
+        </a>
+        <a href="../Lock.html">
+            <button id="lock" type="button"></button>
+        </a>
+        
+        <div id="info"> 
+            <div id="time"></div>
+            <img id="rede" src="../images/Rede.png" align="right">
+            <img id="wifi" src="../images/Wifi.png" align="right">
+        </div>
+        <div id=Screen>
+        
+            <h1 id="title"></h1>
+            <img id="logo" src="">
+            <img id="help" src="../images/help.png" onclick="helpModalOn()" align="right">
+            <div id="help_mod" class="help_mod">
+                <div class="content_mod" >
+                    <span id="info_mod"> <b>To Lock:</b> Press the top left button; <br> <b>To Go Back:</b> Press the top right button; <br> <b>To Main Menu:</b> Press bottom right button. <br> </span>
+                    <button id="ok_mod" onclick="helpModalOff()">Ok</button>
+                </div>
+            </div>   
+            
+            <div id="dir_mod" class="dir_mod">
+                    <div class="content_modD" >
+                        <span id="info_mod" > <b> Are you sure you want to change your current destination? <br> <br> </span>
+                        &emsp;
+                        <button id="no" onclick="noModal()"> No </button>
+                        &emsp;
+                        <button id="yes" onclick="yesModal()">Yes</button>
+                    </div>
+            </div>   
+            
+            <div id="options"> 
+                <table id="outTable" align="center">                    
+                    <tr>
+                        <table class="insideTable"> 
+                            <tr> 
+                                <td id="stopId1" class="stopId">1223</td>
+                                <td id="stopName1" class="stopName">Rua das flores</td>
+                                <td id="time1" class="time">22 horas</td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div id="buttons" class="buttons" align="center">       
+                                        <a href="share/Share.html" onclick="shareModal(1)">
+                                            <button id="share1" class="share"><img class="butt" src="../images/sharealt.png"> Share</button></a> 
+                                        &thinsp;
+                                        <a id="getDirections" onclick="directionsModal(1)">
+                                            <button id="directions1" class="directions" ><img class="butt" src="../images/pin.svg"> Stop Directions</button></a> 
+                                    </div> 
+                                </td>
+                            </tr> 
+                        </table>   
+                    </tr>
+
+                    <br class="break">
+                    <tr>
+                        <table class="insideTable"> 
+                            <tr> 
+                                <td id="stopId2" class="stopId">1223</td>
+                                <td id="stopName2" class="stopName">Rua das flores</td>
+                                <td id="time2" class="time">22 horas</td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div id="buttons" class="buttons" align="center">       
+                                        <a href="share/Share.html" onclick="shareModal(2)">
+                                            <button id="share2" class="share"><img class="butt" src="../images/sharealt.png"> Share</button></a> 
+                                        &thinsp;
+                                        <a id="getDirections" onclick="directionsModal(2)">
+                                            <button id="directions2" class="directions" ><img class="butt" src="../images/pin.svg"> Stop Directions</button></a> 
+                                    </div> 
+                                </td>
+                            </tr> 
+                        </table>   
+                    </tr>
+     
+                    <br class="break">
+                    <tr>
+                        <table class="insideTable"> 
+                            <tr> 
+                                <td id="stopId3" class="stopId">1223</td>
+                                <td id="stopName3" class="stopName">Rua das flores</td>
+                                <td id="time3" class="time">22 horas</td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div id="buttons" class="buttons" align="center">       
+                                        <a href="share/Share.html" onclick="shareModal(3)">
+                                            <button id="share3" class="share"><img class="butt" src="../images/sharealt.png"> Share</button></a> 
+                                        &thinsp;
+                                        <a id="getDirections" onclick="directionsModal(3)">
+                                            <button id="directions3" class="directions" ><img class="butt" src="../images/pin.svg"> Stop Directions</button></a> 
+                                    </div> 
+                                </td>
+                            </tr> 
+                        </table>   
+                    </tr>
+               
+                    <br class="break">
+                    <tr>
+                        <table class="insideTable"> 
+                            <tr> 
+                                <td id="stopId4" class="stopId">1223</td>
+                                <td id="stopName4" class="stopName">Rua das flores</td>
+                                <td id="time4" class="time">22 horas</td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div id="buttons" class="buttons" align="center">       
+                                        <a href="share/Share.html" onclick="shareModal(4)">
+                                            <button id="share4" class="share"><img class="butt" src="../images/sharealt.png"> Share</button></a> 
+                                        &thinsp;
+                                        <a id="getDirections" onclick="directionsModal(4)">
+                                            <button id="directions4"class="directions"  ><img class="butt" src="../images/pin.svg"> Stop Directions</button></a> 
+                                    </div> 
+                                </td>
+                            </tr> 
+                        </table>   
+                    </tr>
+        
+                    <br class="break">
+                    <tr>
+                        <table class="insideTable"> 
+                            <tr> 
+                                <td id="stopId5" class="stopId">1223</td>
+                                <td id="stopName5" class="stopName">Rua das flores</td>
+                                <td id="time5" class="time">22 horas</td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div id="buttons" class="buttons" align="center">       
+                                        <a href="share/Share.html" onclick="shareModal(5)" >
+                                            <button id="share5" class="share"><img class="butt" src="../images/sharealt.png"> Share</button></a> 
+                                        &thinsp;
+                                        <a id="getDirections" onclick="directionsModal(5)">
+                                            <button id="directions5" class="directions"  ><img class="butt" src="../images/pin.svg"> Stop Directions</button></a> 
+                                    </div> 
+                                </td>
+                            </tr> 
+                        </table>   
+                    </tr>
+                        
+                    <br class="break">
+                    <tr>
+                        <table class="insideTable"> 
+                            <tr> 
+                                <td id="stopId6" class="stopId">1223</td>
+                                <td id="stopName6" class="stopName">Rua das flores</td>
+                                <td id="time6" class="time">22 horas</td>
+                            </tr>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div id="buttons" class="buttons" align="center">       
+                                        <a href="share/Share.html" onclick="shareModal(6)">
+                                            <button id="share6" class="share"><img class="butt" src="../images/sharealt.png"> Share</button></a> 
+                                        &thinsp;
+                                        <a id="getDirections" onclick="directionsModal(6)">
+                                            <button id="directions6" class="directions" ><img class="butt" src="../images/pin.svg"> Stop Directions</button></a> 
+                                    </div> 
+                                </td>
+                            </tr> 
+                        </table>   
+                    </tr>
+
+                    <br class="break">
+                    <tr>
+                        <table class="insideTable"> 
+                            <tr> 
+                                <td id="stopId7" class="stopId">1223</td>
+                                <td id="stopName7" class="stopName">Rua das flores</td>
+                                <td id="time7" class="time">22 horas</td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div id="buttons" class="buttons" align="center">       
+                                        <a href="share/Share.html" onclick="shareModal(7)">
+                                            <button id="share7" class="share"><img class="butt" src="../images/sharealt.png"> Share</button></a> 
+                                        &thinsp;
+                                        <a id="getDirections" onclick="directionsModal(7)">
+                                            <button id="directions7" class="directions" ><img class="butt" src="../images/pin.svg"> Stop Directions</button></a> 
+                                    </div> 
+                                </td>
+                            </tr> 
+                        </table> 
+                    </tr> 
+
+                    <br class="break">     
+                    <tr>
+                        <table class="insideTable"> 
+                            <tr> 
+                                <td id="stopId8" class="stopId">1223</td>
+                                <td id="stopName8" class="stopName">Rua das flores</td>
+                                <td id="time8" class="time">22 horas</td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+                                <td >
+                                    <div id="buttons" class="buttons" align="center">       
+                                        <a href="share/Share.html" onclick="shareModal(8)">
+                                            <button id="share8" class="share"><img class="butt" src="../images/sharealt.png"> Share</button></a> 
+                                        &thinsp;
+                                        <a id="getDirections" onclick="directionsModal(8)">
+                                            <button id="directions8" class="directions" ><img class="butt" src="../images/pin.svg"> Stop Directions</button></a> 
+                                    </div> 
+                                </td>
+                            </tr> 
+                        </table>   
+                    </tr>
+                </table>
+            </div>
+            
+        </div>
+    </body>
+</html>

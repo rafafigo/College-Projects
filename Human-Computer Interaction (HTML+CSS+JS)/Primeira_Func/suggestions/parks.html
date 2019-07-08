@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Parks Menu</title>
+		<link rel="stylesheet" href="../Template.css">
+		<link rel="stylesheet" href="Style_suggestions.css">
+        <script src="../Script_template.js"></script>
+        <script src="parks.js"></script>
+        <link rel="shortcut icon" href="../../Images/icon.png">
+    </head>
+    <body onload="timeLoad();">
+        <a href="Menu.html">
+            <button id="back" type="button"></button>
+        </a>
+        <a href="../Menu.html">
+            <button id="home"></button>
+        </a>
+        <div id="info"> 
+            <div id="time"></div>
+            <img id="rede" src="../images/Rede.png" align="right">
+            <img id="wifi" src="../images/Wifi.png" align="right">
+        </div>
+        
+        <h1 id="title">Parks</h1>
+        <img id="help" src="../images/help.png" align="right"> 
+        
+        <div id="options"> 
+            <table align="center">
+                <tr class="space"> <td></td><td></td></tr>
+
+                <tr>
+                    <td style="padding: 0.5pc 0.5pc 0.5pc 0.5pc;"> 
+                        <a class="link" onclick="setPark1()" href="Parks/Park.html">
+                            <img class="suggestions" src="../images/p1.jpg" alt="">
+                        </a>
+                    </td>
+                    <td>
+                        <a class="link" onclick="setPark1()" href="Parks/Park.html">
+                            <span class="description"> Parque Florestal de Monsanto
+                                    <br> Rating 
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <br> Open
+                                    <img class="stars" src="../images/open.png">
+                            </span>
+                        </a>
+                </tr>
+
+                <tr class="space"> <td></td><td></td></tr>
+
+                <tr>
+                    <td style="padding: 0.5pc 0.5pc 0.5pc 0.5pc;">
+                        <a class="link" onclick="setPark2()" href="Parks/Park.html">
+                            <img class="suggestions" src="../images/p2.jpg" alt="">
+                        </a>
+                    </td>
+                    <td>
+                        <a class="link" onclick="setPark2()" href="Parks/Park.html">
+                            <span class="description"> Quinta das Conchas e dos Lilases
+                                <br> Rating
+                                <img class="stars" src="../images/star.png" alt="">
+                                <img class="stars" src="../images/star.png" alt="">
+                                <img class="stars" src="../images/star.png" alt="">
+                                <img class="stars" src="../images/star.png" alt="">
+                                <img class="stars" src="../images/star.png" alt="">
+                                <br> Open
+                                <img class="stars" src="../images/open.png">
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+
+                <tr class="space"> <td></td><td></td></tr>
+
+                <tr>
+                    <td style="padding: 0.5pc 0.5pc 0.5pc 0.5pc;">
+                        <a class="link" onclick="setPark3()" href="Parks/Park.html">
+                            <img class="suggestions" src="../images/p3.jpg" alt="">
+                        </a>
+                    </td>
+                    <td>
+                        <a class="link" onclick="setPark3()" href="Parks/Park.html">
+                            <span class="description"> Parque Eduardo VII
+                                    <br> Rating 
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/halfStar.png" alt="">
+                                    <br> Closed
+                                    <img class="stars" src="../images/closed.svg" alt="">
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+
+                <tr class="space"> <td></td><td></td></tr>
+
+                <tr>
+                    <td style="padding: 0.5pc 0.5pc 0.5pc 0.5pc;">
+                        <a class="link" onclick="setPark4()" href="Parks/Park.html">
+                            <img class="suggestions" src="../images/p4.jpg"" alt="">
+                        </a>
+                    </td>
+                    <td>
+                        <a class="link" onclick="setPark4()" href="Parks/Park.html">
+                            <span class="description"> Parque José Gomes Ferreira
+                                <br> Rating
+                                <img class="stars" src="../images/star.png" alt="">
+                                <img class="stars" src="../images/star.png" alt="">
+                                <img class="stars" src="../images/star.png" alt="">
+                                <img class="stars" src="../images/star.png" alt="">
+                                <img class="stars" src="../images/emptyStar.png" alt="">
+                                <br> Open
+                                <img class="stars" src="../images/open.png">
+                            </span>
+                        </a>
+                    </td>
+                    </tr>
+
+                    <tr class="space"> <td></td><td></td></tr>
+
+                    <tr>
+                        <td style="padding: 0.5pc 0.5pc 0.5pc 0.5pc;">
+                            <a class="link" onclick="setPark5()" href="Parks/Park.html">
+                                <img class="suggestions" src="../images/p5.jpg" alt="">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="link" onclick="setPark5() "href="Parks/Park.html">
+                                <span class="description"> Parque Bensaúde <br> Rating: 
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/halfStar.png" alt="">
+                                    <img class="stars" src="../images/emptyStar.png" alt="">
+                                    <br> Open
+                                    <img class="stars" src="../images/open.png">
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+            </table>
+        </div>
+    </body>
+</html>

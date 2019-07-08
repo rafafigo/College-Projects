@@ -1,0 +1,57 @@
+#video {
+    width: 99.8%;
+}
+
+#bottomBar {
+    text-align: center;
+    position: fixed;
+    bottom: 0%;
+    background-color: snow;
+    color: black;
+    width: 99.9%;
+    height: 4%;
+    padding-top: 5%;
+    padding-bottom: 8%;
+    border-top-color: black;
+    border-top-style: solid;
+    font-size: 1.2pc;
+
+}
+
+#icancel {
+    width: 20px;
+    height: 20px;
+    margin-top: 15%;
+}
+
+#cancel {
+    position: fixed;
+    bottom: 0.5pc;
+    left: 1pc;
+    float:left;
+	background-color:#f24537;
+	border:1px solid #d02718;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	text-decoration:none;
+    text-shadow:0px 1px 0px #810e05;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+
+#cancel:hover {
+	background-color:#c62d1f;
+}
+
+#help {
+    position: fixed;
+    right: 0.5pc;
+    bottom: 0.1pc;
+    height: 2.3pc;
+    width: 2.3pc;
+}

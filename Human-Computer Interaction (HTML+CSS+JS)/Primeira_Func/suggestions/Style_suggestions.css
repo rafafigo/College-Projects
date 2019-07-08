@@ -1,0 +1,65 @@
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+   
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+#help {
+    float: right;
+}
+
+#title {
+    margin-top: 0;
+    left: 50%;
+    position: fixed;
+    transform: translate(-50%, 0%);
+    float: left;
+
+}
+table {
+    border-collapse: collapse;
+}
+
+tr {
+    border-color: black;
+    border-style: ridge;
+    padding: 5px;
+}
+#options {
+    overflow: auto;
+    width: 18.54pc;
+    height: 14pc;
+    margin-top:3pc;
+}
+.space {
+    border-style: none;
+}
+
+.link {
+    text-decoration: none;
+    color:black;
+}
+
+.stars {
+    display: inline;
+    width: 1pc;
+}
+
+#opened {
+    display: inline;
+    width: 0.8pc;
+}
+
+.suggestions{
+    width: 6pc;
+    height: 4pc;
+}

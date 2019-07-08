@@ -1,0 +1,46 @@
+#help {
+    margin-top: 0.4pc;
+}
+
+#table {
+    border-spacing: 2.5pc 1.5pc;
+    position: fixed;
+    top: 63%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#options {
+    line-height: 1.5pc;
+    width: 18.54pc;
+    height: 14pc;
+}
+
+#train, #subway, #bus, #plane {
+    width: 4.0pc;
+}
+
+.name {
+    color: white;
+    font-size: 0.9pc;
+    text-decoration: none;
+}
+
+#testInput {
+    position: fixed;
+    float: left;
+    left: 1.5pc;
+    margin-top: 0.55pc;
+    width: 12.14pc;
+    height: 1.625pc;
+    background-color: #DCE1E4;
+    border-style: solid;
+    border-color: black;
+    color: black;
+    border-radius: 0.5pc; 
+    padding-top: 0.35pc;
+    box-shadow: 0 0 10px black;
+    padding-left: 0.5pc;
+    font-size: 1pc;
+
+}

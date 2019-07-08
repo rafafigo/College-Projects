@@ -1,0 +1,18 @@
+#time_lock {
+    margin-top: 1pc;
+    font-weight: normal;
+    font-size: 5pc;
+    margin-bottom: 0;
+
+}
+
+#date_lock {
+    margin-top: 0;
+    margin-bottom: 1.5pc;
+}
+
+#fingerprint {
+    margin-top: 1pc;
+    width: 6pc;
+    height: 6pc;
+}

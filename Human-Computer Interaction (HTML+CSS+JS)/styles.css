@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: snow;
+    text-align: center;
+}
+
+#t1 {
+    font-size: 3vw;
+}
+
+#t2 {
+    font-size: 2vw;
+}
+
+#t3 {
+    font-size: 1.5vw;
+}
+
+#team {
+    text-align: center;
+    font-size: large;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+    border-spacing: 2vw 0vw;
+}
+
+a {
+    text-decoration: none;
+    color: royalblue;
+}
+
+a:hover {
+    color: mediumblue;
+}
+
+.student {
+    position: relative;
+    display: inline-block;
+    border-style: solid;
+    border-color: black;
+    border-radius: 20%;
+}
+
+.student:hover {
+    border-radius: 0%;
+}
+
+.pic {
+    display: block;
+    border-radius: 20%;
+}
+
+.student:hover .pic {
+    border-radius: 0%;
+}
+
+.info {
+    position: absolute;
+    font-size: large;
+    opacity: 0;
+}
+
+.student:hover .info {
+    position: relative;
+    opacity: 1;
+
+    transition: all 0.5s ease;
+}
+
+#links {
+    text-align: left;
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+    border-spacing: 2vw 2vw;
+}
+
+th {
+    text-align: center;
+    border-bottom-style: solid;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(100, 100, 100, 0.6);
+    color:snow;
+    font-size: large;
+}
+
+
+#ist {
+    margin-top: 0.5vh;
+    margin-bottom: 0vh;
+    border-spacing: 0.5vw 0vw;
+}
+
+
+
+
+ 
+
+ 

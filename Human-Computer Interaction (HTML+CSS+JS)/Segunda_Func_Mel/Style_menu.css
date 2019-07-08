@@ -1,0 +1,16 @@
+#table {
+    position: fixed;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#map, #suggestions, #schedules {
+    width: 4.5pc;
+}
+
+.name {
+   font-size: 0.9pc;
+   color: white;
+   text-decoration: none;
+}
+

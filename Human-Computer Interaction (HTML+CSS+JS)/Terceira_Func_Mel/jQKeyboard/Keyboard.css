@@ -1,0 +1,48 @@
+#help {
+    margin-top: 0.4pc;
+}
+
+#input {
+    margin-left:  1.5pc;
+    margin-right: 1.5pc;
+    margin-top: 0.55pc;
+    float: left;
+}
+
+#find {
+    width: 1.5pc;
+    height: 1.5pc;
+}
+
+#findButton {
+    width: 2.5pc;
+    height: 2.5pc;
+    border: none;
+    text-align: center;
+    border-right: 0.2pc solid #6698cb;;
+    border-top: 0.2pc solid #6698cb;;
+    border-bottom: 0.2pc solid #6698cb;;
+    cursor: pointer;
+    display: inline-block;
+    background-color: #6698cb;;
+    border-top-right-radius: 0.5pc;
+    border-bottom-right-radius: 0.5pc;
+    box-shadow: 0 0 10px #2a67b0;
+
+}
+
+#testInput {
+    float: left;
+    width: 9.64pc;
+    height: 1.975pc;
+    border-left: 0.2pc solid #6698cb;;
+    border-top: 0.2pc solid #6698cb;;
+    border-bottom: 0.2pc solid #6698cb;
+    border-right: none;
+    color: black;
+    border-top-left-radius: 0.5pc;
+    border-bottom-left-radius: 0.5pc;
+    font-size: 1pc;
+    padding-left: 0.5pc;
+    box-shadow: 0 0 10px #2a67b0;
+}

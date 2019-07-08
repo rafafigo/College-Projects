@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Parks Menu</title>
+		<link rel="stylesheet" href="../Template.css">
+		<link rel="stylesheet" href="Style_suggestions.css">
+        <script src="../Script_template.js"></script>
+        <script src="parks.js"></script>
+        <link rel="shortcut icon" href="../../Images/icon.png">
+    </head>
+    <body onload="temp();timeLoad();openT();">
+        <a href="Menu.html">
+            <button id="back" type="button"></button>
+        </a>
+        <a href="../Menu.html">
+            <button id="home"></button>
+        </a>
+        <a href="../Lock.html">
+            <button id="lock" type="button"></button>
+        </a>
+        <div id="info"> 
+            <div id="time"></div>
+            <img id="rede" src="../images/Rede.png" align="right">
+            <img id="wifi" src="../images/Wifi.png" align="right">
+        </div>
+        
+        <div id=Screen>
+            <h1 id="title">Parks</h1>
+            <img id="help" src="../images/help.png" onclick="helpModalOn()" align="right">
+            <div id="help_mod" class="help_mod">
+                <div class="content_mod" >
+                    <span id="info_mod"> <b>To Lock:</b> Press the top left button; <br> <b>To Go Back:</b> Press the top right button; <br> <b>To Main Menu:</b> Press bottom right button. <br> </span>
+                    <button id="ok_mod" onclick="helpModalOff()">Ok</button>
+                </div>
+            </div>     
+            <div id="options"> 
+                <table align="center">
+
+                    <tr>
+                        <td style="padding: 0.5pc 0.5pc 0.5pc 0.5pc;"> 
+                            <a class="link" onclick="setPark1()" href="Parks/Park.html">
+                                <img class="suggestions" src="../images/p1.jpg" alt="">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="link" onclick="setPark1()" href="Parks/Park.html">
+                                <span class="description"> Parque Florestal de Monsanto
+                                        <br> Rating 
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <br> <span id="time1"> </span>
+                                        <img id="isOpen1" class="opened" src="">
+                                </span>
+                            </a>
+                    </tr>
+
+                    <tr class="space"> <td></td><td></td></tr>
+
+                    <tr>
+                        <td style="padding: 0.5pc 0.5pc 0.5pc 0.5pc;">
+                            <a class="link" onclick="setPark2()" href="Parks/Park.html">
+                                <img class="suggestions" src="../images/p2.jpg" alt="">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="link" onclick="setPark2()" href="Parks/Park.html">
+                                <span class="description"> Quinta das Conchas &ensp;e dos Lilases
+                                    <br> Rating
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <br> <span id="time2"> </span>
+                                    <img id="isOpen2" class="opened" src="">
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="space"> <td></td><td></td></tr>
+
+                    <tr>
+                        <td style="padding: 0.5pc 0.5pc 0.5pc 0.5pc;">
+                            <a class="link" onclick="setPark3()" href="Parks/Park.html">
+                                <img class="suggestions" src="../images/p3.jpg" alt="">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="link" onclick="setPark3()" href="Parks/Park.html">
+                                <span class="description"> Parque Eduardo VII
+                                        <br> Rating 
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/halfStar.png" alt="">
+                                        <br> <span id="time3"> </span>
+                                        <img id="isOpen3" class="opened" src="">
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="space"> <td></td><td></td></tr>
+
+                    <tr>
+                        <td style="padding: 0.5pc 0.5pc 0.5pc 0.5pc;">
+                            <a class="link" onclick="setPark4()" href="Parks/Park.html">
+                                <img class="suggestions" src="../images/p4.jpg"" alt="">
+                            </a>
+                        </td>
+                        <td>
+                            <a class="link" onclick="setPark4()" href="Parks/Park.html">
+                                <span class="description"> Parque José Gomes Ferreira
+                                    <br> Rating
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/star.png" alt="">
+                                    <img class="stars" src="../images/emptyStar.png" alt="">
+                                    <br> <span id="time4"> </span>
+                                    <img id="isOpen4" class="opened" src="">
+                                </span>
+                            </a>
+                        </td>
+                        </tr>
+
+                        <tr class="space"> <td></td><td></td></tr>
+
+                        <tr>
+                            <td style="padding: 0.5pc 0.5pc 0.5pc 0.5pc;">
+                                <a class="link" onclick="setPark5()" href="Parks/Park.html">
+                                    <img class="suggestions" src="../images/p5.jpg" alt="">
+                                </a>
+                            </td>
+                            <td>
+                                <a class="link" onclick="setPark5() "href="Parks/Park.html">
+                                    <span class="description"> Parque Bensaúde <br> Rating: 
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/star.png" alt="">
+                                        <img class="stars" src="../images/halfStar.png" alt="">
+                                        <img class="stars" src="../images/emptyStar.png" alt="">
+                                        <br> <span id="time5"> </span>
+                                        <img id="isOpen5" class="opened" src="">
+                                    </span>
+                                </a>
+                            </td>
+                        </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Maps</title>
+        <link rel="shortcut icon" href="../../Images/icon.png">
+		<link rel="stylesheet" href="../Template.css">
+		<link rel="stylesheet" href="../Style_menu.css">
+        <link rel="stylesheet" href="Rootpart1.css">
+        <script type="text/javascript" src="Rootpart1.js"></script>
+        <script type="text/javascript" src="../Script_template.js"></script>
+    </head>
+    <body onload="temp();timeLoad();getValue();">
+        <a id="backL" href="Maps.html">
+            <button id="back" type="button"></button>
+        </a>
+        <a href="../Lock.html">
+            <button id="lock" type="button"></button>
+        </a>
+        <a href="../Menu.html">
+            <button id="home"></button>
+        </a>
+
+        <div id="info"> 
+            <div id="time"></div>
+            <img id="rede" src="../images/Rede.png" align="right">
+            <img id="wifi" src="../images/Wifi.png" align="right">
+        </div>
+
+        <div id="Screen">
+            <img id="help" src="../images/helpBlack.png" onclick="helpModalOn()" align="right">
+            <div id="help_mod" class="help_mod">
+                <div class="content_mod" >
+                    <span id="info_mod"> <b>To Lock:</b> Press the top left button; <br> <b>To Go Back:</b> Press the top right button; <br> <b>To Main Menu:</b> Press bottom right button. <br> </span>
+                    <button id="ok_mod" onclick="helpModalOff()">Ok</button>
+                </div>
+            </div>
+            
+            <div id="testInput"> </div>
+            <div align="center">       
+                <a href="share/share.html">
+                    <button id="share"><img id="ishare" src="../images/share.png"> Share</button></a> 
+                &thinsp;
+                <a href="Rootpart2.html">
+                    <button id="start"> <img id="iplay" src="../images/play.png"> Start </button>
+                </a>
+            </div>
+        </div>
+    </body>
+</html>
