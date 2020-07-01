@@ -1,0 +1,359 @@
+%{
+#include <stdio.h>
+#include <assert.h>
+#include <stdlib.h>
+#include <string.h>
+#include "minor.h"
+#include "node.h"
+#include "postfix.h"
+#include "y.tab.h"
+
+#ifndef U_
+#define U_ "_"
+#endif
+
+#define TRACE
+
+int prInt(Node *n) { return isInt(n->info) ? 1 : 1000; }
+int prStr(Node *n) { return isStr(n->info) ? 1 : 1000; }
+int prArray(Node *n) { return isArray(n->info) ? 1 : 1000; }
+
+static int extcnt;
+static char *extrns[100]; 
+static int nSelects = 0;
+int nElCrtdArray = 0;
+
+char *dupstr(const char *s);
+static void yytrace(NODEPTR_TYPE p, int eruleno, int cost, int bestcost);
+void variable(int, int, Node *);
+
+static int initLbl[20], endLbl[20], steplbl[20];
+static int iflbl[20];
+int ifCount = 0;
+int forCount = 0;
+int isFStr = 1;
+int lbl = 0;
+
+extern FILE *yyout;
+
+static char *mklbl(int n) {
+	static char buf[20];
+	sprintf(buf, "%cL%d", n < 0 ? '.' : '_', n);
+	return strcpy(malloc(strlen(buf)+1),buf);
+}
+
+static void outstr(char *s) {
+  while (*s) fprintf(yyout, pfCHAR, (unsigned char)*s++);
+}
+
+static char *mkfunc(char *s) {
+	static char buf[80];
+	strcpy(buf, "_");
+	strcat(buf, s);
+	return buf;
+}
+
+void needLbl() {
+	if (!isFStr) return;
+	isFStr = 0; 
+	fprintf(yyout, pfRODATA pfALIGN pfLABEL, mklbl(++lbl));
+}
+
+void externs(){
+  int i;
+
+  for (i = 0; i < extcnt; i++)
+    if (extrns[i])
+      fprintf(yyout, pfEXTRN, extrns[i]);
+}
+
+void add_extrn(char* name){
+  for(int i = 0; i < extcnt; i++){
+    if (strcmp(extrns[i],name) == 0) return;
+  }
+  extrns[extcnt++] = dupstr(name);
+}
+
+void initForLbls() {
+	forCount++; 
+	steplbl[forCount] = ++lbl;  
+	endLbl[forCount] = ++lbl; 
+	initLbl[forCount] = ++lbl;
+}
+
+%}
+
+%include "y.tab.h"
+%term STMT=';' WRITE='!'  G='>' L='<' E='=' SCAN='?' AND='&' OR='|' POW='^' ADD='+' MINUS='-' MULT='*' DIV='/' REST='%'
+
+%%
+start: BODY(variableBody, instructions)                                                            1 {}
+start: ASSIGN(IDENT, NIL)                                                                          1 {}
+start: ASSIGN(IDENT, literalsArray)                                                                1 {}
+start: ASSIGN(IDENT, literalsCad)                                                                  1 { fprintf(yyout, pfCHAR, 0);}
+start: ASSIGN(IDENT, NUMBER)                                                                       1 {}
+
+%! ARRAY
+literalsArray: NIL                                                                                1 {}
+literalsArray: NUMBER                                                                             1 { ++nElCrtdArray; fprintf(yyout, pfINTEGER, p->value.i);}
+literalsArray: ARRAY(literalsArray, literalsArray)                                                1 {}
+
+%! STRING
+literalsCad: NIL                                                                                  1 {}
+literalsCad: NUMBER                                                                               1 { needLbl();fprintf(yyout, pfCHAR, (unsigned char) p->value.i); }
+literalsCad: CHARS                                                                                1 { needLbl(); outstr(p->value.s); }
+literalsCad: CHAR                                                                                 1 { needLbl(); fprintf(yyout, pfCHAR, (unsigned char) p->value.i); }
+literalsCad: STRING(literalsCad,literalsCad)                                                      1 { needLbl(); }
+
+variableBody: NIL                                                                                 1 {}
+variableBody: IDENT                                                                               1 { if (p->line != -1) { fprintf(yyout, pfIMM pfALLOC pfSP pfLOCA, 4 * p->line, (int)p->place);} }
+variableBody: VARIABLES(variableBody, variableBody)                                               1 {}
+
+%! Instructions
+instructions: INSTRS(instructionsBody, instructionFinal)                                          1 {}
+ 
+instructionsBody: NIL                                                                             1 {}
+instructionsBody: instruction                                                                     1 {}
+instructionsBody: INSTR(instructionsBody, instructionsBody)                                       1 {}
+
+instructionFinal: NIL                                                                             1 {}
+instructionFinal: RETURN(NIL)                                                                     1 { fprintf(yyout, pfLEAVE pfRET); }
+instructionFinal: RETURN(expression)                                                              1 { fprintf(yyout, pfPOP pfLEAVE pfRET); }
+
+instruction: STMT(expression)                                                                     1 { fprintf(yyout, pfTRASH, 4);}
+
+%! For
+instruction: FOR(FORCONDITION(forInit, forCond), FORBODY(do, step))                               1 { forCount--; }
+
+forInit: expression                                                                               1 { initForLbls(); fprintf(yyout, pfLABEL, mklbl(initLbl[forCount])); }
+
+forCond: UNTIL(expression)	                                                                      1 { fprintf(yyout, pfJNZ, mklbl(endLbl[forCount])); }
+
+do: DO(instructions)                                                                              1 { fprintf(yyout, pfLABEL, mklbl(steplbl[forCount])); }
+
+step: STEP(expression)                                                                            1 { fprintf(yyout, pfJMP pfLABEL, mklbl(initLbl[forCount]), mklbl(endLbl[forCount])); }
+
+instructionFinal: REPEAT                                                                          1 { fprintf(yyout, pfJMP, mklbl(steplbl[forCount])); }
+instructionFinal: STOP                                                                            1 { fprintf(yyout, pfJMP, mklbl(endLbl[forCount])); }
+
+%! Print
+instruction: WRITE(expression)                                                                    prInt { fprintf(yyout, pfEXTRN pfCALL pfTRASH pfPUSH, "_printi", "_printi", 4); }
+instruction: WRITE(expression)                                                                    prStr { fprintf(yyout, pfEXTRN pfCALL pfTRASH pfPUSH, "_prints", "_prints", 4); }
+
+%! Alloc
+instruction: MMRY(ADDR, expression)                                                               1 { fprintf(yyout, pfIMM pfMUL pfALLOC pfSP pfADDRA, (isStr(LEFT_CHILD(p)->info) ? 1 : 4), LEFT_CHILD(p)->value.s); }
+instruction: MMRY(LOCAL, expression)                                                              1 { fprintf(yyout, pfIMM pfMUL pfALLOC pfSP pfLOCA, (isStr(LEFT_CHILD(p)->info) ? 1 : 4), LEFT_CHILD(p)->value.i); }
+
+%! Ifs 
+instruction: IFCONDITION(if, ELS(elifs, else))                                                    1 { --ifCount; }
+if: IF(ifCond, instructions)                                                                      1 { fprintf(yyout, pfJMP pfLABEL, mklbl(iflbl[ifCount]), mklbl(LEFT_CHILD(p)->place)); }
+ifCond: cond                                                                                      1 { iflbl[++ifCount] = ++lbl; }
+
+elifs: NIL                                                                                        1 {}
+elifs: ELIF(elifs, elif)                                                                          1 {}
+elif: IF(elifCond, instructions)                                                                  1 { fprintf(yyout, pfJMP pfLABEL, mklbl(iflbl[ifCount]), mklbl(LEFT_CHILD(p)->place)); }
+elifCond: cond                                                                                    1 {}
+
+else: ELSE(NIL)                                                                                   1 { fprintf(yyout, pfLABEL, mklbl(iflbl[ifCount])); }
+else: ELSE(instructions)                                                                          1 { fprintf(yyout, pfLABEL, mklbl(iflbl[ifCount])); }
+
+cond: G(expression, expression)                                                                   1 { p->place = ++lbl; if(isStr(LEFT_CHILD(p)->info)) fprintf(yyout, pfEXTRN pfCALL pfTRASH pfPUSH pfIMM pfJLE, "_strcmp", "_strcmp", 4*2, 0, mklbl(p->place)); 
+																									  else fprintf(yyout, pfJLE, mklbl(p->place)); }
+
+cond: L(expression, expression)                                                                   1 { p->place = ++lbl; if(isStr(LEFT_CHILD(p)->info)) fprintf(yyout, pfEXTRN pfCALL pfTRASH pfPUSH pfIMM pfJGE, "_strcmp", "_strcmp", 4*2, 0, mklbl(p->place)); 
+																									  else fprintf(yyout, pfJGE, mklbl(p->place)); }
+
+cond: LE(expression, expression)                                                                  1 { p->place = ++lbl; if(isStr(LEFT_CHILD(p)->info)) fprintf(yyout, pfEXTRN pfCALL pfTRASH pfPUSH pfIMM pfJGT, "_strcmp", "_strcmp", 4*2, 0, mklbl(p->place)); 
+																									  else fprintf(yyout, pfJGT, mklbl(p->place)); }
+
+cond: GE(expression, expression)                                                                  1 { p->place = ++lbl; if(isStr(LEFT_CHILD(p)->info)) fprintf(yyout, pfEXTRN pfCALL pfTRASH pfPUSH pfIMM pfJLT, "_strcmp", "_strcmp", 4*2, 0, mklbl(p->place)); 
+																									else fprintf(yyout, pfJLT, mklbl(p->place)); }
+
+cond: NE(expression, expression)                                                                  1 { p->place = ++lbl; if(isStr(LEFT_CHILD(p)->info)) fprintf(yyout, pfEXTRN pfCALL pfTRASH pfPUSH pfIMM pfJEQ, "_strcmp", "_strcmp", 4*2, 0, mklbl(p->place)); 
+																									else fprintf(yyout, pfJEQ, mklbl(p->place)); }
+cond: E(expression, expression)                                                                   1 { p->place = ++lbl; if(isStr(LEFT_CHILD(p)->info)) fprintf(yyout, pfEXTRN pfCALL pfTRASH pfPUSH pfIMM pfJNE, "_strcmp", "_strcmp", 4*2, 0, mklbl(p->place)); 
+																									else fprintf(yyout, pfJNE, mklbl(p->place)); }
+
+cond: expression                                                                                  1 { p->place = ++lbl; fprintf(yyout, pfJZ, mklbl(p->place)); }
+
+
+%! Load or Load Char for strings indexed
+expression: LOCAL                                                                                 1 { fprintf(yyout, pfLOCV, p->value.i); }
+expression: ADDR                                                                                  1 { fprintf(yyout, pfADDRV, p->value.s); }
+expression: leftValue                                                                             1 { (p->attrib == LEFTEXP && isStr(LEFT_CHILD(p)->info))? fprintf(yyout, pfLDCHR) : fprintf(yyout, pfLOAD); }
+
+%! Literals
+expression: NUMBER                                                                                1 { fprintf(yyout, pfIMM, p->value.i); }
+expression: CHAR                                                                                  1 { fprintf(yyout, pfIMM, p->value.i); }	
+expression: literalsCad                                                                           1 { fprintf(yyout, pfCHAR, 0); fprintf(yyout, pfTEXT pfADDR, mklbl(lbl)); isFStr = 1; }
+
+expression: PRIORITY(expression)                                                                  1 {}
+
+expression: NOT(expression)                                                                       1 { fprintf(yyout, pfIMM pfEQ, 0); }
+expression: UMINUS(expression)                                                                    1 { fprintf(yyout, pfNEG); }
+
+%! Scan ints
+expression: SCAN                                                                                  1 { fprintf(yyout, pfEXTRN pfCALL pfPUSH, "_readi", "_readi"); }
+
+expression: UADDR(leftValue)                                                                      1 {}
+
+expression: POW(expression, expression)                                                           1 { fprintf(yyout, pfEXTRN pfCALL pfTRASH pfPUSH, "_pow", "_pow", 4*2);}
+
+expression: MULT(expression, expression)                                                          1 { fprintf(yyout, pfMUL); }
+expression: DIV(expression, expression)                                                           1 { fprintf(yyout, pfDIV); }
+expression: REST(expression, expression)                                                          1 { fprintf(yyout, pfMOD); }
+
+%! ADD
+expression: ADD(expression, expression)                                                           prArray {fprintf(yyout, pfIMM pfMUL pfADD, 4); }
+expression: ADD(expression, expression)                                                           prInt { fprintf(yyout, pfADD); }
+
+%! Subtract
+expression: MINUS(expression, expression)                                                         prArray { if (isInt(LEFT_CHILD(p)->info)) { fprintf(yyout, pfSWAP); } fprintf(yyout, pfIMM pfMUL, 4); if (isInt(LEFT_CHILD(p)->info)) { fprintf(yyout, pfSWAP); } fprintf(yyout, pfSUB); }
+expression: MINUS(expression, expression)                                                         prInt { fprintf(yyout, pfSUB); }
+
+
+%! Comparations Expressions
+expression: G(expression, expression)                                                             1 { if(isStr(LEFT_CHILD(p)->info)) fprintf(yyout, pfEXTRN pfCALL pfTRASH pfPUSH pfIMM pfGT, "_strcmp", "_strcmp", 4*2, 0); 
+																									  else fprintf(yyout, pfGT); }
+
+expression: L(expression, expression)                                                             1 { if(isStr(LEFT_CHILD(p)->info)) fprintf(yyout, pfEXTRN pfCALL pfTRASH pfPUSH pfIMM pfLT, "_strcmp", "_strcmp", 4*2, 0); 
+																									  else fprintf(yyout, pfLT); }
+
+expression: LE(expression, expression)                                                            1 { if(isStr(LEFT_CHILD(p)->info)) fprintf(yyout, pfEXTRN pfCALL pfTRASH pfPUSH pfIMM pfLE, "_strcmp", "_strcmp", 4*2, 0); 
+																									  else fprintf(yyout, pfLE); }
+
+expression: GE(expression, expression)                                                            1 { if(isStr(LEFT_CHILD(p)->info)) fprintf(yyout, pfEXTRN pfCALL pfTRASH pfPUSH pfIMM pfGE, "_strcmp", "_strcmp", 4*2, 0); 
+																									else fprintf(yyout, pfGE); }
+
+expression: NE(expression, expression)                                                            1 { if(isStr(LEFT_CHILD(p)->info)) fprintf(yyout, pfEXTRN pfCALL pfTRASH pfPUSH pfIMM pfNE, "_strcmp", "_strcmp", 4*2, 0); 
+																									else fprintf(yyout, pfNE); }
+
+expression: E(expression, expression)                                                             1 { if(isStr(LEFT_CHILD(p)->info)) fprintf(yyout, pfEXTRN pfCALL pfTRASH pfPUSH pfIMM pfEQ, "_strcmp", "_strcmp", 4*2, 0); 
+																									  else fprintf(yyout, pfEQ); }
+
+expression: AND(and, expression)                                                                  1 { fprintf(yyout, pfLABEL, mklbl(LEFT_CHILD(p)->place)); }
+and: expression                                                                                   1 { p->place = ++lbl; fprintf(yyout, pfDUP pfJZ pfTRASH, mklbl(p->place), 4); }
+
+expression: OR(or, expression)                                                                    1 { fprintf(yyout, pfLABEL, mklbl(LEFT_CHILD(p)->place)); }
+or: expression                                                                                    1 { p->place = ++lbl; fprintf(yyout, pfDUP pfJNZ pfTRASH, mklbl(p->place), 4); }
+
+%! Assignments
+expression: ASSIG(expression, LOCAL)                                                              1 { fprintf(yyout, pfDUP pfLOCA, RIGHT_CHILD(p)->value.i); }
+expression: ASSIG(expression, ADDR)                                                               1 { fprintf(yyout, pfDUP pfADDRA, RIGHT_CHILD(p)->value.s); }
+
+expression: ASSIG(assgn, leftValue)                                                               1 { (RIGHT_CHILD(p)->attrib == LEFTEXP && isStr(LEFT_CHILD(RIGHT_CHILD(p))->info)) ? fprintf(yyout, pfSTCHR) :  fprintf(yyout, pfSTORE); }
+assgn: expression                                                                                 1 { fprintf(yyout, pfDUP);}
+
+%! Calls
+expression: CALL(IDENT, args)                                                                     1 { fprintf(yyout, pfCALL pfTRASH pfPUSH, mkfunc(LEFT_CHILD(p)->value.s), (int) RIGHT_CHILD(p)->place); } 
+expression: CALL(IDENT, NIL)                                                                      1 { fprintf(yyout, pfCALL pfPUSH, mkfunc(LEFT_CHILD(p)->value.s)); } 
+
+args: NIL                                                                                         1 { p->place = 0; }
+args: ARGS(expression, args)                                                                      1 { p->place = RIGHT_CHILD(p)->place + 4; }
+
+leftValue: LOCAL                                                                                  1 { fprintf(yyout, pfLOCAL, p->value.i); }
+leftValue: ADDR                                                                                   1 { fprintf(yyout, pfADDR, p->value.s); }
+leftValue: LEFTEXP(lVec, expression)                                                              1 { fprintf(yyout, pfIMM pfMUL pfADD, isStr(LEFT_CHILD(p)->info) ? 1 : 4); }
+lVec: leftValue                                                                                   1 { fprintf(yyout, pfLOAD); }
+
+%%
+extern char **yynames;
+extern int trace, errors, debugNode;
+
+void evaluate(Node *p, int i) {
+	if (errors) return;
+	
+	if (trace) printNode(p, stdout, yynames);
+
+
+	if (p->attrib == PROGRAM)  {
+		fprintf(yyout, pfTEXT pfALIGN pfGLOBL pfLABEL pfENTER, "_main", pfFUNC, "_main", i); 
+		if (yyselect(RIGHT_CHILD(p))) ++nSelects;
+		fprintf(yyout, pfIMM pfPOP pfLEAVE pfRET, 0);
+	}
+
+	externs();
+	if (nSelects == 0 && trace) printf("selection successful\n");
+	
+}
+
+void variable(int isVisible, int isConst, Node * n) {
+	
+	if (errors) return;
+
+	char * name = LEFT_CHILD(n)->value.s;
+	Node * assign = RIGHT_CHILD(n);
+
+	if(isForward(isVisible)) { add_extrn(name); return;}
+
+	if(isPublic(isVisible)) fprintf(yyout, pfGLOBL, name, pfOBJ);
+
+	if(isConst(isConst)) fprintf(yyout, pfRODATA);
+	else if (assign->attrib == NIL && !(isArray(LEFT_CHILD(n)->info) && n->line != -1)) { 	
+		fprintf(yyout, pfBSS); 
+	}
+	else fprintf(yyout, pfDATA);
+
+	fprintf(yyout, pfALIGN pfLABEL, name);
+
+	if (assign->attrib != NIL) {
+		switch (assign->attrib) {
+			case NUMBER: fprintf(yyout, pfINTEGER, assign->value.i); break;
+			case STRING:
+			++lbl;
+			fprintf(yyout, pfID pfLABEL,  mklbl(lbl), mklbl(lbl));
+			isFStr = 0;
+			if (yyselect(n)) ++nSelects;
+			isFStr = 1;
+			break;
+			case ARRAY:
+			++lbl;
+			fprintf(yyout, pfID pfLABEL, mklbl(lbl), mklbl(lbl));
+			if(yyselect(n)) ++nSelects;
+		}
+	} else if (!(isArray(LEFT_CHILD(n)->info) && n->line != -1)) { fprintf(yyout, pfBYTE, 4); }
+
+	if(isArray(LEFT_CHILD(n)->info) && n->line != -1) {
+		if(assign->attrib == NIL) {
+			++lbl;
+			fprintf(yyout, pfID pfLABEL, mklbl(lbl), mklbl(lbl));
+		} 
+		
+		for(int i = 0; i < (LEFT_CHILD(n)->line - nElCrtdArray); i++)
+			fprintf(yyout, pfINTEGER,0);
+	}
+	nElCrtdArray = 0;
+	for (int i = 0; i < extcnt; i++) if (extrns[i] && strcmp(extrns[i], name) == 0) extrns[i] = 0;
+}
+
+void function(int visible, int type, char *name, int enter, Node *stmt) {
+  if (errors) return;
+  
+  if(isForward(visible)) { add_extrn(mkfunc(name)); return; }
+
+  fprintf(yyout, pfTEXT pfALIGN);
+  if (isPublic(visible)) { fprintf(yyout, pfGLOBL, mkfunc(name), pfFUNC); }
+
+  fprintf(yyout, pfLABEL pfENTER, mkfunc(name), enter);
+
+  if (yyselect(LEFT_CHILD(stmt))) ++nSelects;
+
+  fprintf(yyout, pfLEAVE pfRET); 
+
+  for (int i = 0; i < extcnt; i++) if (extrns[i] && strcmp(extrns[i], mkfunc(name)) == 0) extrns[i] = 0;
+}
+
+#ifndef NOTRACE
+
+static void yytrace(NODEPTR_TYPE p, int eruleno, int cost, int bestcost)
+{
+	int op = OP_LABEL(p);
+	YYCONST char *tname = yytermname[op] ? yytermname[op] : "?";
+	if (debugNode) fprintf(stderr, "0x%p:%s matched %s with cost %d vs. %d\n", p, tname, yystring[eruleno], cost, bestcost);
+	if (cost >= MAX_COST && bestcost >= MAX_COST) {
+		fprintf(stderr, "0x%p:%s NO MATCH %s with cost %d vs. %d\n", p, tname, yystring[eruleno], cost, bestcost);
+		printNode(p, stderr, yynames);
+	}
+}
+
+#endif

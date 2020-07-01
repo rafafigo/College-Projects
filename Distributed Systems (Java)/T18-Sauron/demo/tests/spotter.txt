@@ -1,0 +1,19 @@
+init ../demo/tests/data/init.txt
+spot car 00NX08
+spot car 0*
+spot car *
+spot car *12*
+spot car *1*A*
+spot car *1*AA*
+spot car 0*0*
+spot person 1012435145270653984
+spot person 1*
+spot person *
+spot person *12
+spot person 1*2
+spot person 1*2*3
+spot person 90*
+trail person 1012435145270653984
+trail car 00NX08
+trail person 1
+clear
