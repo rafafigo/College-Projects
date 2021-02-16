@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "ServerGStore";
+
+package gstore;
+
+service PupSyncServices {
+	rpc Status(StatusRequest) returns (StatusReply);
+	rpc Crash(CrashRequest) returns (CrashReply);
+	rpc Freeze(FreezeRequest) returns (FreezeReply);
+	rpc Unfreeze(UnfreezeRequest) returns (UnfreezeReply);
+}
+
+message StatusRequest {}
+
+message StatusReply {
+	int32 code = 1;
+}
+
+message CrashRequest {}
+
+message CrashReply {}
+
+message FreezeRequest {}
+
+message FreezeReply {}
+
+message UnfreezeRequest {}
+
+message UnfreezeReply {}

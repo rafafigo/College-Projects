@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option csharp_namespace = "PuppetMaster";
+
+package gstore;
+
+service PCSServices {
+	rpc NewServer(NewServerRequest) returns (NewServerReply);
+	rpc NewClient(NewClientRequest) returns (NewClientReply);
+}
+
+message Partition {
+	string idPart = 1;
+	repeated string idServs = 2;
+}
+
+message NewServerRequest {
+	string idServ = 1;
+	string URL = 2;
+	int32 minDelay = 3;
+	int32 maxDelay = 4;
+	repeated Partition sParts = 5;
+	map<string, string> servs = 6;
+}
+
+message NewServerReply {}
+
+message NewClientRequest {
+	string uname = 1;
+	string URL = 2;
+	string script = 3;
+	repeated Partition sParts = 4;
+	map<string, string> servs = 5;
+}
+
+message NewClientReply {}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PolicySet xmlns="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17" PolicySetId="urn:oasis:names:tc:xacml:3.0:policySetid:Regular" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:deny-unless-permit" Version="1.0">
+  <Description />
+  <Target>
+    <AnyOf>
+      <AllOf>
+        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Regular</AttributeValue>
+          <AttributeDesignator Category="urn:oasis:names:tc:xacml:3.0::attributecategory:environment" AttributeId="urn:oasis:names:tc:xacml:1.0:environment:environment-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </Match>
+      </AllOf>
+    </AnyOf>
+  </Target>
+  <PolicyIdReference Version="1.0">urn:oasis:names:tc:xacml:3.0:policyid:ClinicalAssistant-Regular</PolicyIdReference>
+  <PolicyIdReference Version="1.0">urn:oasis:names:tc:xacml:3.0:policyid:Doctor</PolicyIdReference>
+  <PolicyIdReference Version="1.0">urn:oasis:names:tc:xacml:3.0:policyid:Nurse</PolicyIdReference>
+  <PolicyIdReference Version="1.0">urn:oasis:names:tc:xacml:3.0:policyid:HospitalManager</PolicyIdReference>
+  <PolicyIdReference Version="1.0">urn:oasis:names:tc:xacml:3.0:policyid:LaboratoryTechnician</PolicyIdReference>
+  <PolicyIdReference Version="1.0">urn:oasis:names:tc:xacml:3.0:policyid:PatientServicesAssistant-Regular</PolicyIdReference>
+  <PolicyIdReference Version="1.0">urn:oasis:names:tc:xacml:3.0:policyid:Porter-Regular</PolicyIdReference>
+  <PolicyIdReference Version="1.0">urn:oasis:names:tc:xacml:3.0:policyid:WardClerk</PolicyIdReference>
+  <PolicyIdReference Version="1.0">urn:oasis:names:tc:xacml:3.0:policyid:Employee</PolicyIdReference>
+  <PolicyIdReference Version="1.0">urn:oasis:names:tc:xacml:3.0:policyid:PartnerLab</PolicyIdReference>
+</PolicySet>

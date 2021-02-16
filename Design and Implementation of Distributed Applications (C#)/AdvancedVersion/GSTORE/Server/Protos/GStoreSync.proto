@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option csharp_namespace = "ServerGStore";
+
+package gstore;
+
+service GStoreSync {
+	rpc AppendEntries(AppendEntriesRequest) returns (AppendEntriesReply);
+	rpc RequestVote(RequestVoteRequest) returns (RequestVoteReply);
+}
+
+message Entry {
+	string idObj = 1;
+	string val = 2;
+}
+
+message AppendEntriesRequest {
+	int32 term = 1;
+	int32 tag = 2;
+	string mid = 3;
+	string idPart = 4;
+	repeated Entry entries = 5;
+}
+
+message AppendEntriesReply {
+	int32 term = 1;
+	int32 tag = 2;
+	string mid = 3;
+}
+
+message RequestVoteRequest {
+	int32 term = 1;
+	int32 tag = 2;
+	string idPart = 3;
+}
+
+message RequestVoteReply {
+	bool accept = 1;
+}

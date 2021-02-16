@@ -1,0 +1,261 @@
+From - Sat Nov  7 15:11:38 2020
+X-Account-Key: account1
+X-UIDL: 57
+X-Mozilla-Status: 0011
+X-Mozilla-Status2: 00000000
+X-Mozilla-Keys:                                                                                 
+Received: from DB8EUR05HT241.eop-eur05.prod.protection.outlook.com
+ (2603:10a6:600:e::30) by LO2P265MB0734.GBRP265.PROD.OUTLOOK.COM with HTTPS
+ via LO2P265CA0450.GBRP265.PROD.OUTLOOK.COM; Sat, 7 Nov 2020 15:11:17 +0000
+Received: from DB8EUR05FT004.eop-eur05.prod.protection.outlook.com
+ (2a01:111:e400:fc0f::45) by
+ DB8EUR05HT241.eop-eur05.prod.protection.outlook.com (2a01:111:e400:fc0f::396)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3541.17; Sat, 7 Nov
+ 2020 15:11:17 +0000
+Authentication-Results: spf=pass (sender IP is 185.70.40.135)
+ smtp.mailfrom=protonmail.com; outlook.com; dkim=pass (signature was verified)
+ header.d=protonmail.com;outlook.com; dmarc=pass action=none
+ header.from=protonmail.com;compauth=pass reason=100
+Received-SPF: Pass (protection.outlook.com: domain of protonmail.com
+ designates 185.70.40.135 as permitted sender)
+ receiver=protection.outlook.com; client-ip=185.70.40.135;
+ helo=mail-40135.protonmail.ch;
+Received: from mail-40135.protonmail.ch (185.70.40.135) by
+ DB8EUR05FT004.mail.protection.outlook.com (10.233.238.106) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3541.17 via Frontend Transport; Sat, 7 Nov 2020 15:11:17 +0000
+X-IncomingTopHeaderMarker:
+ OriginalChecksum:D8120EE7C189138BA16E90A3B51766CA14D27C801B889C66EEF5A563515C267B;UpperCasedChecksum:8F300AEE55172F391B2E9005D2C9156B55CB7E3A650143F89541B36E21D40C1A;SizeAsReceived:1324;Count:14
+Date: Sat, 07 Nov 2020 15:11:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail; t=1604761876;
+	bh=jGF6ZCcLXqceuVpR12dX1EDmFKBcSWWtY33qBSyCZAY=;
+	h=Date:To:From:Reply-To:Subject:In-Reply-To:References:From;
+	b=lxvLtPZfe7N38O15gw9zhrt364dmJkf7WkO9fXW5mjImWmJ3wnlhXdBDohBoyOqV+
+	 ffa1OoeCscLtmqnZ6LqEsUlYG/lNqWzF6KQrlRQOEJwmsbm8jhoOH4bztusGeXRA4i
+	 eDXeglUZJB+kJfFHsRsGpIQtuCs1PYh5Q9Y80dJM=
+To: Rick Chick <rick_chick_@outlook.com>
+From: N16H70WL_services <N16H70WL_services@protonmail.com>
+Reply-To: N16H70WL_services <N16H70WL_services@protonmail.com>
+Subject: Re: Job
+Message-ID: <FTuFuT9cPfGe_KT-O2LhQEZYd43Y-UuXKljLtn9ydLbyibEKud8egm5mCj8z90So1IxWzQBpsnUbgMPUFxz-mKZhd9YlYWYVTbMhcRORX0U=@protonmail.com>
+In-Reply-To: <LO2P265MB0734B7049924D9DF8EEF13B3A5EC0@LO2P265MB0734.GBRP265.PROD.OUTLOOK.COM>
+References: <LO2P265MB0734B7049924D9DF8EEF13B3A5EC0@LO2P265MB0734.GBRP265.PROD.OUTLOOK.COM>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Spam-Status: No, score=-1.2 required=10.0 tests=ALL_TRUSTED,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FROM shortcircuit=no
+	autolearn=disabled version=3.4.4
+X-Spam-Checker-Version: SpamAssassin 3.4.4 (2020-01-24) on
+	mailout.protonmail.ch
+X-IncomingHeaderCount: 14
+Return-Path: N16H70WL_services@protonmail.com
+X-MS-Exchange-Organization-ExpirationStartTime: 07 Nov 2020 15:11:17.0651
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id:
+ bff1a96d-2168-4866-4a82-08d8832f6006
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-Exchange-Organization-AuthSource:
+ DB8EUR05FT004.eop-eur05.prod.protection.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-UserLastLogonTime: 11/7/2020 3:04:16 PM
+X-MS-Office365-Filtering-Correlation-Id: bff1a96d-2168-4866-4a82-08d8832f6006
+X-MS-TrafficTypeDiagnostic: DB8EUR05HT241:
+X-MS-Exchange-EOPDirect: true
+X-Sender-IP: 185.70.40.135
+X-SID-PRA: N16H70WL_SERVICES@PROTONMAIL.COM
+X-SID-Result: PASS
+X-MS-Exchange-Organization-PCL: 2
+X-MS-Exchange-Organization-SCL: 0
+X-Microsoft-Antispam: BCL:0;
+X-OriginatorOrg: outlook.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Nov 2020 15:11:17.0162
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: bff1a96d-2168-4866-4a82-08d8832f6006
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-AuthSource:
+ DB8EUR05FT004.eop-eur05.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg:
+ 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8EUR05HT241
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:00.4634072
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.3499.032
+X-Microsoft-Antispam-Mailbox-Delivery:
+	abwl:0;wl:0;pcwl:0;kl:0;iwl:0;dwl:0;dkl:0;rwl:0;ucf:0;jmr:0;ex:0;auth:1;dest:I;OFR:SpamFilterPass;ENG:(5062000282)(90000117)(90012020)(91020020)(91040095)(9000001)(9050020)(9100272)(5061607266)(5061608174)(1005109)(4900115)(2008001094)(2008000189)(4920090)(6225004)(4950131)(4990090)(9110004);
+X-Message-Info:
+	5vMbyqxGkdfEYp2cHbQwfW07/M7G9RkUZQudVL7WICfsMWdZQoDTOzT3Sm6wus1hBvysjSBhR4jzQkXvzQYpok8nWzMdalhNm8d+xiC673jwmEpJvcrnIoceA7tJ/2nFijAfRaNAgZaL/KaP3NorMbAbIF8i2B13xHQAXtrEEz5k3/T7kt7gKLpHDhGoJFTjebRv9FX4CgLXIkpzV2LNmg==
+X-Message-Delivery: Vj0xLjE7dXM9MDtsPTA7YT0xO0Q9MTtHRD0xO1NDTD0tMQ==
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?cngvQjhCOHRZVkQrdEQ3QjVXSnhrWlR6a0kyTmNyazZGK3IwckhBTFh6ckIv?=
+ =?utf-8?B?L1Q2TVVLTTFkNUU2U3RRTW03bVAxMExMMzkzZmtVdjZnbUFDVUtNaUdkbVZF?=
+ =?utf-8?B?S2VKVmltbnhNNFRwem1WWFU4Q1lZMEp1SnZ4ZWNMOVBManh1U1VnZm9DKzJj?=
+ =?utf-8?B?WnNsSXJOMlNXQ3QzbXhNU0MzTWtVV1ZkT2REZlJYUk5zb3ljVzc5UUFCYkFU?=
+ =?utf-8?B?ZVUyUTF1bUdINExEWEhHY3VaTkVjRjJsWVV0VlVXdEFYeDBmejUybHVqS2J6?=
+ =?utf-8?B?NjNYZGtjcWJMcFZ0L0xJcFk0SjM3RkNzWU9NbDJTMXlLaXI3YW53Z3RCdkRR?=
+ =?utf-8?B?NFhXckxEK3QrRHVudnlvQ3h2LzdyR0hZSXhySUZ0cmZlK00rQmZvcmNEdmFm?=
+ =?utf-8?B?b1ptWFhvRDhUNlpJVldzVmY3R0MxSHM4eWtYd3Z6VVNUcVdLV2t5Wk1UdjVs?=
+ =?utf-8?B?Ykt0VTdaMVN1UVZZMVc2aGdmS1ZsWHJuSkwxWENvSUtrazlFa1poKzdmdFBt?=
+ =?utf-8?B?T3VQRmEwaGtKMDVjT0VPalV5TXQwVjZFSG5HT1Rzd20ycHdwMXpGOE5TUm5m?=
+ =?utf-8?B?U3BkSTFXZ25namZtbE5mb1dFU3BxMjFLTWhEeDcwSVFGMEsrbzJKUHJqR1F6?=
+ =?utf-8?B?Ynd3K0lqcElFOTNzcjM5cHNmUVlQSEsyNGtVYUJuRitLWE5va2wrK1MwRVlS?=
+ =?utf-8?B?RWR0Tm5JVHdJYkZtMmk2eGo3bFlVeEdnK0ppaTJTMDlwVU9vMGRVMGk3eGEz?=
+ =?utf-8?B?Q3c3TmR3RUROVlNWd2x0aTNnMXhaa05EelQvdG5EMjRNWTZlZHFCSFJiQkxa?=
+ =?utf-8?B?Y1NvTWFOOE9xRHBlRk82bnZ5TDNzb2tPa2IxMGtEZ2VMeTRodmNSYlhrQUlz?=
+ =?utf-8?B?SWFJaC9aU1RWR2xSZDRIaGNvclhYbjZMWGc1MWdFTGplc3ZSZVNtc0c2V1gw?=
+ =?utf-8?B?UisvcUN1L1Y2UEMzN2dxN0tvTndWTFVWejJBNDNOU1RsMGVUUUQvRnhtejFY?=
+ =?utf-8?B?UnhnWlAvWjRQOUUxelhFSGhIL0dxOTJnb0ZEQ2UzekhCZEhqMm4xVUF5c0lm?=
+ =?utf-8?B?ZFBLaEV4ZExoaWlvVWlZYk13b3BHK0Z4RHJKZlRGMjk3Smpwdmh6YnhHTFZq?=
+ =?utf-8?B?VUc1Tlg0bVNJN1RkTStYQU1HYW4veU9nVVRXM1BzR2c5Yk4xWS9obm90ZERz?=
+ =?utf-8?B?cHNOREQzVUxjL3labUdFcWFUb053VjFCd3ppcjZSaHlUUWZpNFM4dGJDNUJ3?=
+ =?utf-8?B?TkpEYlh3T2d6Q3VjTUhSakdFSWZQMVd0MlVtb2xVcG50NDJNZE1EVGVQZTJy?=
+ =?utf-8?B?ZTJza2xpK3VtczhEWVVJYVg3cE5kbE4xQlFXWC9jbnZ5M1RkcS9kSFJ2UDR4?=
+ =?utf-8?B?SVBWaHFMN1FYSVVZR1BTZHdWQmxzTUNYZ3RMaDRCS2RoZjh0eGVvTzNVc3JN?=
+ =?utf-8?B?U2JYcFRkMWYzWGhNckpPSU9zVVR5aGNTZEtNQzZXcFlsL1VPd2RnR1BmaGJv?=
+ =?utf-8?Q?NfvPpPDkJjgJakl/XVvgKsqbpqC?=
+MIME-Version: 1.0
+
+38.737310, -9.130273
+today
+1715
+
+=E2=80=90=E2=80=90=E2=80=90=E2=80=90=E2=80=90=E2=80=90=E2=80=90 Original Me=
+ssage =E2=80=90=E2=80=90=E2=80=90=E2=80=90=E2=80=90=E2=80=90=E2=80=90
+On Saturday, November 7, 2020 3:05 PM, Rick Chick <rick_chick_@outlook.com>=
+ wrote:
+
+> We have a common friend. He told me you are the one I need for a job.
+>
+> Can we meet?
+>
+> -- R
+
+
+.
+
+From - Sun Nov  8 09:15:15 2020
+X-Account-Key: account1
+X-UIDL: 61
+X-Mozilla-Status: 0001
+X-Mozilla-Status2: 00000000
+X-Mozilla-Keys:                                                                                 
+Received: from DB8EUR06HT102.eop-eur06.prod.protection.outlook.com
+ (2603:10a6:600:a4::15) by LO2P265MB0734.GBRP265.PROD.OUTLOOK.COM with HTTPS
+ via LO2P265CA0315.GBRP265.PROD.OUTLOOK.COM; Sun, 8 Nov 2020 09:15:12 +0000
+Received: from DB8EUR06FT061.eop-eur06.prod.protection.outlook.com
+ (2a01:111:e400:fc35::47) by
+ DB8EUR06HT102.eop-eur06.prod.protection.outlook.com (2a01:111:e400:fc35::322)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3541.24; Sun, 8 Nov
+ 2020 09:15:12 +0000
+Authentication-Results: spf=pass (sender IP is 185.70.40.130)
+ smtp.mailfrom=protonmail.com; outlook.com; dkim=pass (signature was verified)
+ header.d=protonmail.com;outlook.com; dmarc=pass action=none
+ header.from=protonmail.com;compauth=pass reason=100
+Received-SPF: Pass (protection.outlook.com: domain of protonmail.com
+ designates 185.70.40.130 as permitted sender)
+ receiver=protection.outlook.com; client-ip=185.70.40.130;
+ helo=mail-40130.protonmail.ch;
+Received: from mail-40130.protonmail.ch (185.70.40.130) by
+ DB8EUR06FT061.mail.protection.outlook.com (10.233.253.209) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3541.24 via Frontend Transport; Sun, 8 Nov 2020 09:15:12 +0000
+X-IncomingTopHeaderMarker:
+ OriginalChecksum:7D281747D25D18557D6B38EC92F2CA130BFE07E5F388C47FF98D966BD0ABD6C9;UpperCasedChecksum:C0EEF415EE73AD9DF8A8D1AE20B2EAABC958E44645D3CFF4CD1A6426654AE012;SizeAsReceived:1150;Count:11
+Date: Sun, 08 Nov 2020 09:15:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail; t=1604826911;
+	bh=xbqQU4pB0c6gp+u+Bsnhw9HNGDiolgNb5d6PQCnQ4og=;
+	h=Date:To:From:Reply-To:Subject:From;
+	b=nMHTsn5isVco+S3ZjO4pGNeMj0IFnQzfLiPe1MYb+zNvtU0F1r5NPkeqNw9gKqU7+
+	 4Aj6dFij+B2xaAm4UCNwqJS6FvzmlqqFHcjdczmklVZ9lYA6vPtRNT3HqPSmC7gi0S
+	 9DZ/Jm9w5NwJNeYpAhHIlgQG7JkuyI294mkE2VU4=
+To: Rick Chick <rick_chick_@outlook.com>
+From: N16H70WL_services <N16H70WL_services@protonmail.com>
+Reply-To: N16H70WL_services <N16H70WL_services@protonmail.com>
+Subject: Done
+Message-ID: <PeVa2PTXhaQR2TkZFXD7FfXkzL1yHSE_u1FpdFXV2xMYD3tENTLXvMWBX7JPxyBEtwKsDNpLRkbPpNvL93LiWF8mlyHFIImP5iUFwIhMjy0=@protonmail.com>
+Content-Type: multipart/alternative;
+ boundary="b1_9KTTLpkRekodUUwoZRhcOsCS4NZsKFmEarFvMOy0"
+X-Spam-Status: No, score=-1.2 required=10.0 tests=ALL_TRUSTED,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FROM,HTML_MESSAGE,
+	TVD_SPACE_RATIO shortcircuit=no autolearn=disabled version=3.4.4
+X-Spam-Checker-Version: SpamAssassin 3.4.4 (2020-01-24) on
+	mailout.protonmail.ch
+X-IncomingHeaderCount: 11
+Return-Path: N16H70WL_services@protonmail.com
+X-MS-Exchange-Organization-ExpirationStartTime: 08 Nov 2020 09:15:12.4318
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id:
+ ad1a8a4a-1f20-4f19-b350-08d883c6cc1f
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-Exchange-Organization-AuthSource:
+ DB8EUR06FT061.eop-eur06.prod.protection.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-UserLastLogonTime: 11/8/2020 9:14:43 AM
+X-MS-Office365-Filtering-Correlation-Id: ad1a8a4a-1f20-4f19-b350-08d883c6cc1f
+X-MS-TrafficTypeDiagnostic: DB8EUR06HT102:
+X-MS-Exchange-EOPDirect: true
+X-Sender-IP: 185.70.40.130
+X-SID-PRA: N16H70WL_SERVICES@PROTONMAIL.COM
+X-SID-Result: PASS
+X-MS-Exchange-Organization-PCL: 2
+X-MS-Exchange-Organization-SCL: 0
+X-Microsoft-Antispam: BCL:0;
+X-OriginatorOrg: outlook.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Nov 2020 09:15:12.3768
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: ad1a8a4a-1f20-4f19-b350-08d883c6cc1f
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-AuthSource:
+ DB8EUR06FT061.eop-eur06.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg:
+ 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8EUR06HT102
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:00.5023019
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.3499.032
+X-Microsoft-Antispam-Mailbox-Delivery:
+	abwl:0;wl:0;pcwl:0;kl:0;iwl:0;ijl:0;dwl:0;dkl:0;rwl:0;ucf:0;jmr:0;ex:0;auth:1;dest:I;ENG:(5062000282)(90000117)(90012020)(91020020)(91040095)(9000001)(9050020)(9100272)(5061607266)(5061608174)(4900115)(2008001094)(2008000189)(4920090)(6515079)(4950131)(4990090);
+X-Message-Info:
+	5vMbyqxGkdf1zx3xYbUI7GroXteV2lHo1FQrEwaF6XO/e8e5ndpU2JT2NRmw+sn0qddJqUJD15zKj1Gnunv/3M3CJjOEyxILo41KKjPy6W2gIR1h/GrvARyAPDgD9UC/bzl6b91tmTkE7evDRo2614t4VjbGMXoc6f6k5WXXmM6UScAaWkK8Wst1Y99FpeVBx256Zbd9czx6sgw5X2Z9xw==
+X-Message-Delivery: Vj0xLjE7dXM9MDtsPTA7YT0xO0Q9MTtHRD0xO1NDTD0z
+X-Microsoft-Antispam-Message-Info:
+	CX0E5PJKKcDDR0odgI8GrtNzBoPoj+F8nFDu8ZzVbLOC1H7ig0Wd/VS243dUEaReZMRp0HTpgN/gl6Jp/ILlV80JFAOGkeFIG80YehETdRS0JEPhbyPYg1b2/2L/rP0g5/lmb8KcLquQQgo3WOXeM3Fxd3056TcyjNgTx/GxS3/8D4HxuS/UZKZ1J95sWJtNjycfFJX3aAvMHV5PV4yeY8QtrVXz9zbxrJB82xrHdLslTj41CZvuezJN1FSaGVQ2P08SNruWM9Gv0EoW1zojResbrn0y78xQ8VBb0nqx48KSTuJswMoZ6r4oRw8D5uZv52xLWGDujV9BDflc293TVg9sZHbAUg4q1/CUW1p8ipf2DkSI47CgMfO9X1jUA8VwhVZzXrP8W1tceXbsKaB0hEMIvHVQkn2IjFiEyvxIYKcqnWkDznH0FmPGCTxG4KrwcvI4WqAaYFAlNHkf/YTFDOP7qr2Tfmtp1xTa3WVZ+1g4u+IEjrJFYSSwD1GuxtCAy0baBkfrbv3hU95E8hbE1xYdH3gnn/fOjABTxIXvxBdlw0fnIxfvpc3HqanJSQMH4XZogdsWYPtXTnTC5eVGQe7e60+fNrlGGKSsyYABEfJ3CvclxhF8BamRoGxqcbkqC2rN/mI/J/sa1rRx81Nf2cK6yM2pONUEyCU7hT2O29b+pvSu1SG5nEKZ4Gh38UsKkCwo/YnG3ZUD82WywIaXDWPqpF8up0LHpkbGqv+ijCfiy+uQSYzSUBhZwwGf9XFUbkTXEe/uQ4cUhhJK90911KfmUa7vtuPPZJ60ZPKWL5eLjyQkNhoSJxrOaYhcEM3NJJwCJ+pXqjlQctEJYQUTlm62sODg5zpmfa1bWRCB274qbod6gQvWwv4D34Xhm2Lkf5tGgFhOgcj4nQUCqwtYP9OVNp3FwkYOgNrEnx3qpjH4TkJgsZKUcaGHOUdYkthX
+MIME-Version: 1.0
+
+--b1_9KTTLpkRekodUUwoZRhcOsCS4NZsKFmEarFvMOy0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: base64
+
+V2hhdCB5b3UgYXNrZWQgZm9yOiBodHRwczovL3d3dy5kcm9wYm94LmNvbS9zL25mN2M0azd1aWsx
+MW5iNC94ZmFybWEuemlwP2RsPTA=
+
+--b1_9KTTLpkRekodUUwoZRhcOsCS4NZsKFmEarFvMOy0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: base64
+
+PG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJz
+ZXQ9dXRmLTgiPjxkaXY+V2hhdCB5b3UgYXNrZWQgZm9yOiA8YSBocmVmPSJodHRwczovL3d3dy5k
+cm9wYm94LmNvbS9zL25mN2M0azd1aWsxMW5iNC94ZmFybWEuemlwP2RsPTAiPmh0dHBzOi8vd3d3
+LmRyb3Bib3guY29tL3MvbmY3YzRrN3VpazExbmI0L3hmYXJtYS56aXA/ZGw9MDwvYT48YnI+PC9k
+aXY+PGRpdj48YnI+PC9kaXY+
+
+--b1_9KTTLpkRekodUUwoZRhcOsCS4NZsKFmEarFvMOy0--
+.
+

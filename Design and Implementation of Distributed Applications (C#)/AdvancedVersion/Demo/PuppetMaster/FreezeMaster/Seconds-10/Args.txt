@@ -1,0 +1,20 @@
+ReplicationFactor 3
+Partition 3 p1 01 02 03
+Server 01 http://localhost:2001 0 0
+Server 02 http://localhost:2002 0 0
+Server 03 http://localhost:2003 0 0
+Wait 3000
+Freeze 01
+Wait 3000
+Client FreezeMaster-10-01 http://localhost:3001 Clients/Write/Script.txt
+Client FreezeMaster-10-02 http://localhost:3002 Clients/Write/Script.txt
+Client FreezeMaster-10-03 http://localhost:3003 Clients/Write/Script.txt
+Client FreezeMaster-10-04 http://localhost:3004 Clients/Write/Script.txt
+Client FreezeMaster-10-05 http://localhost:3005 Clients/Write/Script.txt
+Client FreezeMaster-10-06 http://localhost:3006 Clients/Write/Script.txt
+Client FreezeMaster-10-07 http://localhost:3007 Clients/Write/Script.txt
+Client FreezeMaster-10-08 http://localhost:3008 Clients/Write/Script.txt
+Client FreezeMaster-10-09 http://localhost:3009 Clients/Write/Script.txt
+Client FreezeMaster-10-10 http://localhost:3010 Clients/Write/Script.txt
+Wait 10000
+Unfreeze 01

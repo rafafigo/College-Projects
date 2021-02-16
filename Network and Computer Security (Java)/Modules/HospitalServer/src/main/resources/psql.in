@@ -1,0 +1,4 @@
+#!/bin/sh
+dropdb --if-exists mtrdb
+createdb mtrdb
+echo "DROP ROLE IF EXISTS mtr; CREATE ROLE mtr LOGIN PASSWORD '1337';" | psql mtrdb

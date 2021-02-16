@@ -1,0 +1,60 @@
+{
+  "advisory": {
+    "id": 755,
+    "cwe": "CWE-471"
+  },
+  "correct_cwe": "CWE-74",
+  "correct_package_link": "https://registry.npmjs.org/handlebars/-/handlebars-3.0.6.tgz",
+  "vulnerability": {
+    "vulnerability_location": [
+      {
+        "block": {
+          "file": "lib/handlebars/compiler/javascript-compiler.js",
+          "start_lineno": 16,
+          "end_lineno": 20,
+          "code": "if (JavaScriptCompiler.isValidJavaScriptVariableName(name)) {return [parent, '.', name];} else {return [parent, \"['\", name, \"']\"];}"
+        }
+      }
+    ],
+    "fail_reason": ""
+  },
+  "poc": [
+    {
+      "file_path": "755.patch.md"
+    }
+  ],
+  "patch": [
+    {
+      "file_path": "https://github.com/handlebars-lang/handlebars.js/commit/7372d4e9dffc9d70c09671aa28b9392a1577fd86"
+    }
+  ],
+  "tools": {
+    "codeql": {
+      "score": "D"
+    },
+    "njsscan": {
+      "score": "E"
+    },
+    "graudit": {
+      "score": "C"
+    },
+    "insidersec": {
+      "score": "C"
+    },
+    "eslint": {
+      "score": "E"
+    },
+    "appinspector": {
+      "score": "C"
+    },
+    "msdevskim": {
+      "score": "D"
+    },
+    "drek": {
+      "score": "D"
+    },
+    "mosca": {
+      "score": "C"
+    }
+  }
+}

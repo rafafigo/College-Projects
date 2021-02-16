@@ -1,0 +1,16 @@
+1,1,Allows Visits,2019-12-31 23:59
+1,2,Allows Visits,2019-12-31 11:13
+1,3,Patient can Receive Visits twice a Week,2018-12-25 21:27
+1,4,Cannot Receive Visits,2020-02-01 10:43
+2,1,Patient can Receive Visits once a Week,2019-03-11 12:56
+2,2,Cannot Receive Visits,2018-04-12 14:32
+2,3,Allows Visits,2020-05-19 18:14
+2,4,Allows Visits,2020-06-27 22:02
+3,1,Allows Visits,2020-08-26 21:00
+3,2,Cannot Receive Visits,2020-10-15 08:07
+3,3,Allows Visits,2019-03-14 05:08
+3,4,Cannot Receive Visits,2018-02-13 18:09
+4,1,Allows Visits,2019-01-27 17:18
+4,2,Cannot Receive Visits,2019-11-02 12:21
+4,3,Allows Visits,2019-12-23 01:44
+4,4,Patient can Receive Visits once a Week,2019-11-12 02:29

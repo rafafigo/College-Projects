@@ -1,0 +1,44 @@
+Begin-Repeat 100
+
+Read p1 o-$i -1
+Read p2 o-$i -1
+Read p3 o-$i -1
+
+Write p1 o-$i "p1-o-$i"
+Write p2 o-$i "p2-o-$i"
+Write p3 o-$i "p3-o-$i"
+
+Read p1 o-$i -1
+Read p2 o-$i -1
+Read p3 o-$i -1
+
+Read p1 o-$i -1
+Read p2 o-$i -1
+Read p3 o-$i -1
+
+Write p1 o-$i "p1-o-$i"
+Write p2 o-$i "p2-o-$i"
+Write p3 o-$i "p3-o-$i"
+
+Read p1 o-$i -1
+Read p2 o-$i -1
+Read p3 o-$i -1
+
+Read p1 o-$i -1
+Read p2 o-$i -1
+Read p3 o-$i -1
+
+Write p1 o-$i "p1-o-$i"
+Write p2 o-$i "p2-o-$i"
+Write p3 o-$i "p3-o-$i"
+
+Read p1 o-$i -1
+Read p2 o-$i -1
+Read p3 o-$i -1
+
+Read p1 o-$i -1
+Read p2 o-$i -1
+Read p3 o-$i -1
+
+End-Repeat
+

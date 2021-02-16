@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "ClientGStore";
+
+package gstore;
+
+service PupSyncServices {
+	rpc Status(StatusRequest) returns (StatusReply);
+}
+
+message StatusRequest {}
+
+message StatusReply {
+	int32 code = 1;
+}

@@ -1,0 +1,16 @@
+1,1,COVID19 - Positive,2019-12-31 23:59,HS
+1,2,COVID19 - Negative,2019-12-31 11:13,HS
+1,3,Asthma - Positive,2018-12-25 21:27,HS
+1,4,Asthma - Negative,2020-02-01 10:43,HS
+2,1,Appendicitis - Positive,2019-03-11 12:56,HS
+2,2,Appendicitis - Negative,2018-04-12 14:32,HS
+2,3,Celiac Disease - Positive,2020-05-19 18:14,HS
+2,4,Multiple Sclerosis - Negative,2020-06-27 22:02,HS
+3,1,Multiple Sclerosis - Positive,2020-08-26 21:00,HS
+3,2,Heart Disease - Positive,2020-10-15 08:07,HS
+3,3,Heart Disease - Negative,2019-03-14 05:08,HS
+3,4,Autism - Positive,2018-02-13 18:09,HS
+4,1,Autism - Negative,2019-01-27 17:18,HS
+4,2,Alzheimer - Positive,2019-11-02 12:21,HS
+4,3,Alzheimer - Positive,2019-12-23 01:44,HS
+4,4,Alzheimer - Negative,2019-11-12 02:29,HS

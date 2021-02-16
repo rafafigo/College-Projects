@@ -1,0 +1,12 @@
+ReplicationFactor 2
+Partition 2 p1 s1 s2
+Partition 2 p2 s2 s3
+Server s1 http://localhost:8081 0 100
+Server s2 http://localhost:8082 100 300
+Server s3 http://localhost:8083 100 200
+Client Mary http://localhost:8080 Clients/2/Script.txt
+Status
+Wait 2000
+Freeze s1
+Unfreeze s1
+Crash s2

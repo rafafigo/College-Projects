@@ -1,0 +1,267 @@
+Subject: [PATCH 4/6] SQLi Vulnerabilities Mitigated
+Vulnerability 1 Mitigated
+Vulnerability 2 Mitigated
+Vulnerability 3 Mitigated
+Vulnerability 4 Mitigated
+Vulnerability 5 Mitigated
+Vulnerability 6 Mitigated
+Vulnerability 7 Mitigated
+Vulnerability 8 Mitigated
+Vulnerability 9 Mitigated
+Vulnerability 13 Mitigated
+Vulnerability 14 Mitigated
+Vulnerability 26 Mitigated
+Vulnerability 27 Mitigated
+Vulnerability 28 Mitigated
+Vulnerability 29 Mitigated
+Vulnerability 30 Mitigated
+Vulnerability 31 Mitigated
+
+---
+ facefive/app/model.py | 84 +++++++++++++++++++++----------------------
+ 1 file changed, 42 insertions(+), 42 deletions(-)
+
+diff --git a/facefive/app/model.py b/facefive/app/model.py
+--- a/facefive/app/model.py
++++ b/facefive/app/model.py
+@@ -78,9 +78,9 @@ def init_db():
+ 
+ 
+ # SELECT QUERIES
+-def get_all_results(q):
++def get_all_results(q, params):
+     cur = mysql.connection.cursor()
+-    cur.execute(q)
++    cur.execute(q, params)
+     mysql.connection.commit()
+     data = cur.fetchall()
+     cur.close()
+@@ -88,9 +88,9 @@ def get_all_results(q):
+ 
+ 
+ # UPDATE and INSERT QUERIES
+-def commit_results(q):
++def commit_results(q, params):
+     cur = mysql.connection.cursor()
+-    cur.execute(q)
++    cur.execute(q, params)
+     mysql.connection.commit()
+     cur.close()
+ 
+@@ -100,10 +100,10 @@ def commit_results(q):
+ ### out: User
+ def get_user(username):
+     q = "SELECT * FROM Users"
+-    q+= " WHERE username = '%s'" % (username)
++    q+= " WHERE username = %(username)s"
+ 
+     logging.debug("get_user query: %s" % q)
+-    data = get_all_results(q)
++    data = get_all_results(q, {'username': username})
+ 
+     if len(data) == 1:
+         user = User(*(data[0]))
+@@ -118,11 +118,11 @@ def get_user(username):
+ ### out: User
+ def login_user(username, password):
+     q = "SELECT * FROM Users"
+-    q+= " WHERE username = '%s'" % (username)
+-    q+= " AND password = '%s'" % (password)
++    q+= " WHERE username = %(username)s"
++    q+= " AND password = %(password)s"
+     
+     logging.debug("login_user query: %s" % q)
+-    data = get_all_results(q)
++    data = get_all_results(q, {'username': username, 'password': password})
+ 
+     if len(data) == 1:
+         user = User(*(data[0]))
+@@ -137,10 +137,10 @@ def login_user(username, password):
+ ### out: User
+ def register_user(username, password):
+     q = "INSERT INTO Users (username, password)"
+-    q+= " VALUES ('%s', '%s')" % (username, password)
++    q+= " VALUES (%(username)s, %(password)s)"
+ 
+     logging.debug("register_user query: %s" % q)
+-    commit_results(q)
++    commit_results(q, {'username': username, 'password': password})
+     return User(username, password)
+ 
+ 
+@@ -149,11 +149,11 @@ def register_user(username, password):
+ ### out: User
+ def update_user(username, new_name, new_password, new_about, new_photo):
+     q = "UPDATE Users"
+-    q+= " SET username = '%s', password = '%s', name = '%s', about = '%s', photo = '%s'" % (username, new_password, new_name, new_about, new_photo)
+-    q+= " WHERE username = '%s'" % (username)
++    q+= " SET username = %(username)s, password = %(new_password)s, name = %(new_name)s, about = %(new_about)s, photo = %(new_photo)s"
++    q+= " WHERE username = %(username)s"
+ 
+     logging.debug("update_user query: %s" % q)
+-    commit_results(q)
++    commit_results(q, {'username': username, 'new_password': new_password, 'new_name': new_name, 'new_about': new_about, 'new_photo': new_photo})
+     return User(username, new_password, new_name, new_about, new_photo)
+     
+ 
+@@ -162,10 +162,10 @@ def update_user(username, new_name, new_password, new_about, new_photo):
+ ### out: True
+ def new_post(username, new_content, type):
+     q = "INSERT INTO Posts (author, content, type)"
+-    q+= " VALUES ('%s', '%s', '%s')" % (username, new_content, type)
++    q+= " VALUES (%(username)s, %(new_content)s, %(type)s)"
+ 
+     logging.debug("new_post query: %s" % q)
+-    commit_results(q)
++    commit_results(q, {'username': username, 'new_content': new_content, 'type': type})
+     return True
+ 
+ 
+@@ -174,10 +174,10 @@ def new_post(username, new_content, type):
+ ### out: Post
+ def get_post(post_id):
+     q = "SELECT * FROM Posts"
+-    q+= " WHERE id = '%s'" % (post_id)
++    q+= " WHERE id = %(post_id)s"
+ 
+     logging.debug("get_post query: %s" % q)
+-    data = get_all_results(q)
++    data = get_all_results(q, {'post_id': post_id})
+ 
+     if len(data) == 1:
+         post = Post(*(data[0]))
+@@ -192,11 +192,11 @@ def get_post(post_id):
+ ### out: True
+ def edit_post(post_id, new_content, type):
+     q = "UPDATE Posts"
+-    q+= " SET content = '%s', type = '%s'" % (new_content, type)
+-    q+= " WHERE id = '%s'" % (post_id)
++    q+= " SET content = %(new_content)s, type = %(type)s" 
++    q+= " WHERE id = %(post_id)s"
+ 
+     logging.debug("edit_post query: %s" % q)
+-    commit_results(q)
++    commit_results(q, {'new_content': new_content, 'type': type, 'post_id': post_id})
+     return True
+ 
+ 
+@@ -207,14 +207,14 @@ def get_all_posts(username):
+     q = "SELECT Posts.id, Users.username, Users.name, Users.photo, Posts.content, Posts.type, Posts.created_at"
+     q+= " FROM Users INNER JOIN Posts"
+     q+= " ON Users.username = Posts.author"
+-    q+= " WHERE Posts.author = '%s'" % (username)
++    q+= " WHERE Posts.author = %(username)s"
+     q+= " OR (Posts.type = 'Public')"
+     q+= " OR (Posts.type = 'Friends' AND Posts.author IN"
+-    q+= " (SELECT username1 from Friends WHERE username2 = '%s'" % (username)
+-    q+= "  UNION SELECT username2 from Friends WHERE username1 = '%s'))" % (username)
++    q+= " (SELECT username1 from Friends WHERE username2 = %(username)s"
++    q+= "  UNION SELECT username2 from Friends WHERE username1 = %(username)s))"
+ 
+     logging.debug("get_all_posts query: %s" % q)
+-    data = get_all_results(q)
++    data = get_all_results(q, {'username': username})
+     posts_to_show = []
+ 
+     for x in data:
+@@ -229,10 +229,10 @@ def get_all_posts(username):
+ ### out: True
+ def new_friend_request(username, new_friend):
+     q = "INSERT INTO FriendsRequests (username1, username2)"
+-    q+= " VALUES ('%s', '%s')" % (username, new_friend)
++    q+= " VALUES (%(username)s, %(new_friend)s)"
+ 
+     logging.debug("new_friend_request query: %s" % q)
+-    commit_results(q)
++    commit_results(q, {'username': username, 'new_friend': new_friend})
+     return True
+ 
+ 
+@@ -241,10 +241,10 @@ def new_friend_request(username, new_friend):
+ ### out: data
+ def is_request_pending(requester, username):
+     q = "SELECT username1 FROM FriendsRequests"
+-    q+= " WHERE username1 = '%s' AND username2 = '%s'" % (requester, username)
++    q+= " WHERE username1 = %(requester)s AND username2 = %(username)s"
+     
+     logging.debug("is_request_pending query: %s" % q)
+-    data = get_all_results(q)
++    data = get_all_results(q, {'requester': requester, 'username': username})
+     return data
+ 
+ 
+@@ -255,10 +255,10 @@ def get_pending_requests(username):
+     q = "SELECT * from Users"
+     q+= " WHERE username IN"
+     q+= " (SELECT username1 FROM FriendsRequests"
+-    q+= "  WHERE username2 = '%s')" % (username)
++    q+= "  WHERE username2 = %(username)s)"
+     
+     logging.debug("get_pending_requests query: %s" % q)
+-    data = get_all_results(q)
++    data = get_all_results(q, {'username': username})
+     users = []
+ 
+     for x in data:
+@@ -273,17 +273,17 @@ def get_pending_requests(username):
+ ### out: True
+ def accept_friend_request(username, accept_friend):
+     q = "INSERT INTO Friends (username1, username2)"
+-    q+= " VALUES ('%s', '%s');" % (accept_friend, username)
++    q+= " VALUES (%(accept_friend)s, %(username)s);"
+     
+     logging.debug("accept_friend_request query1: %s" % q)
+     cur = mysql.connection.cursor()
+-    cur.execute(q)
++    cur.execute(q, {'accept_friend': accept_friend, 'username': username})
+ 
+     q = "DELETE FROM FriendsRequests"
+-    q+= " WHERE username1 = '%s' AND username2 = '%s';" % (accept_friend, username)
++    q+= " WHERE username1 = %(accept_friend)s AND username2 = %(username)s;"
+ 
+     logging.debug("accept_friend_request query2: %s" % q)
+-    cur.execute(q)
++    cur.execute(q, {'accept_friend': accept_friend, 'username': username})
+     mysql.connection.commit()
+ 
+     cur.close()
+@@ -295,15 +295,15 @@ def accept_friend_request(username, accept_friend):
+ ### out: List of Users
+ def get_friends(username, search_query):
+     q = "SELECT * FROM Users"
+-    q+= " WHERE username LIKE '%%%s%%'" % (search_query)
++    q+= " WHERE username LIKE %(search_query)s"
+     q+= " AND username IN" 
+     q+= " (SELECT username1 FROM Friends"
+-    q+= "  WHERE username2 = '%s'" % (username)
++    q+= "  WHERE username2 = %(username)s"
+     q+= "  UNION SELECT username2 FROM Friends"
+-    q+= "  WHERE username1 = '%s')" % (username)
++    q+= "  WHERE username1 = %(username)s)"
+ 
+     logging.debug("get_friends query: %s" % q)
+-    data = get_all_results(q)
++    data = get_all_results(q, {'search_query': "%{}%".format(search_query), 'username': username})
+     friends = []
+ 
+     for x in data:
+@@ -318,13 +318,13 @@ def get_friends(username, search_query):
+ ### out: List of usernames
+ def get_friends_aux(username):
+     q = "SELECT username2 FROM Friends"
+-    q+= " WHERE username1 = '%s'" % (username)
++    q+= " WHERE username1 = %(username)s"
+     q+= " UNION"
+     q+= " SELECT username1 FROM Friends"
+-    q+= " WHERE username2 = '%s'" % (username)
++    q+= " WHERE username2 = %(username)s"
+ 
+     logging.debug("get_friends_aux query: %s" % q)
+-    data = get_all_results(q)
++    data = get_all_results(q, {'username': username})
+     friends = []
+ 
+     for x in data:
+-- 
+2.25.1
+

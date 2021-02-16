@@ -1,0 +1,176 @@
+Subject: [PATCH 2/6] CSRF Vulnerabilities Mitigated
+Vulnerability 10 Mitigated
+Vulnerability 11 Mitigated
+Vulnerability 12 Mitigated
+
+---
+ facefive/app/__init__.py                     |  4 ++++
+ facefive/app/templates/create_post.html      |  1 +
+ facefive/app/templates/edit_post.html        |  1 +
+ facefive/app/templates/pending_requests.html |  1 +
+ facefive/app/templates/request_friend.html   |  1 +
+ facefive/app/views.py                        | 12 +++++++++++-
+ facefive/requirements.txt                    |  1 +
+ 7 files changed, 20 insertions(+), 1 deletion(-)
+
+diff --git a/facefive/app/__init__.py b/facefive/app/__init__.py
+--- a/facefive/app/__init__.py
++++ b/facefive/app/__init__.py
+@@ -1,5 +1,6 @@
+ from flask import Flask
+ from flask_mysqldb import MySQL
++from flask_wtf.csrf import CSRFProtect
+ import os, sys, time
+ 
+ from jinja2 import Environment
+@@ -20,6 +21,9 @@ app.config['MAX_CONTENT_PATH'] = 102400
+ mysql = MySQL(app)
+ current_user = None
+ 
++# Enable CSRF Protection Globally
++csrf = CSRFProtect(app)
++
+ @app.context_processor
+ def inject():
+     return {'photos_folder' : app.config['photos_folder']}
+diff --git a/facefive/app/templates/create_post.html b/facefive/app/templates/create_post.html
+--- a/facefive/app/templates/create_post.html
++++ b/facefive/app/templates/create_post.html
+@@ -11,6 +11,7 @@
+         </div>
+         <div class="col-6 bg-secondary">
+             <form class="mb-3" action="/create_post" method="post">
++              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+               <fieldset>
+                 <legend>Insert the Content for your post</legend>
+                 <hr class="half-rule" color="grey" />
+diff --git a/facefive/app/templates/edit_post.html b/facefive/app/templates/edit_post.html
+--- a/facefive/app/templates/edit_post.html
++++ b/facefive/app/templates/edit_post.html
+@@ -11,6 +11,7 @@
+         </div>
+         <div class="col-6 bg-secondary">
+             <form class="mb-3" action="/edit_post" method="post">
++              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+               <fieldset>
+                 <legend>Edit the Content for your post</legend>
+                 <hr class="half-rule" color="grey" />
+diff --git a/facefive/app/templates/pending_requests.html b/facefive/app/templates/pending_requests.html
+--- a/facefive/app/templates/pending_requests.html
++++ b/facefive/app/templates/pending_requests.html
+@@ -21,6 +21,7 @@
+     <div class="row border border-dark rounded ml-1 mr-1" style="border-width:2px !important;">
+       <a class="ml-2 mr-2 mt-1 mb-1"><h4><img src = {{ photos_folder + tentative_friend.photo}} alt="" width="50" height="50">{{ tentative_friend.username }} : {{ tentative_friend.name }}
+         <form class="form-horizontal" action="/pending_requests" method="post">
++          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+           <input type="hidden" name="username" value= {{ tentative_friend.username }} /> 
+           <button type="submit" class="btn btn-success">Accept this friend</button>
+       </form></h4> 
+diff --git a/facefive/app/templates/request_friend.html b/facefive/app/templates/request_friend.html
+--- a/facefive/app/templates/request_friend.html
++++ b/facefive/app/templates/request_friend.html
+@@ -8,6 +8,7 @@
+         <div class="col-4">
+             <center>
+                 <form class="form-horizontal" action="/request_friend" method=post>
++                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                     <fieldset>
+                         <legend>Add Friend</legend>
+                         <div class="form-group">
+diff --git a/facefive/app/views.py b/facefive/app/views.py
+--- a/facefive/app/views.py
++++ b/facefive/app/views.py
+@@ -1,8 +1,9 @@
+ from flask import render_template, request, session, redirect, url_for, flash, make_response, escape
+ from flask_mysqldb import MySQL
++from flask_wtf.csrf import CSRFProtect, CSRFError
+ import random, string
+ 
+-from __init__ import app, mysql, current_user
++from __init__ import app, mysql, current_user, csrf
+ import model
+ 
+ import logging
+@@ -16,12 +17,14 @@ def filter_scanner_boys():
+ 
+ 
+ ##### auxiliar to render errors
++@app.errorhandler(CSRFError)
+ def error(msg):
+    return render_template('error_response.html', msg = msg)
+ 
+ 
+ ##### initializes db
+ @app.route('/init', methods=['GET', 'POST'])
++@csrf.exempt
+ def init():
+    model.init_db()
+    flash("Initialisation DONE!", 'error')
+@@ -32,6 +35,7 @@ def init():
+ ### shows all posts if user is logged in
+ ### redirects to login otherwise
+ @app.route('/')
++@csrf.exempt
+ def home():
+    if 'username' in session:
+       username = session['username']
+@@ -53,6 +57,7 @@ def home():
+ ### redirects to home if login is succesful
+ ### redirects to login otherwise
+ @app.route('/login', methods=['GET', 'POST'])
++@csrf.exempt
+ def login():
+    global current_user
+ 
+@@ -88,6 +93,7 @@ def login():
+ ### redirects to home if registration is succesful
+ ### redirects to register otherwise
+ @app.route('/register', methods=['GET', 'POST'])
++@csrf.exempt
+ def register():
+    global current_user
+ 
+@@ -127,6 +133,7 @@ def register():
+ ##### logout
+ ### removes the username from the session if it is there
+ @app.route('/logout')
++@csrf.exempt
+ def logout():
+    global current_user
+ 
+@@ -140,6 +147,7 @@ def logout():
+ ### shows the user profile if user is logged in
+ ### redirects to login otherwise
+ @app.route('/profile', methods=["GET"])
++@csrf.exempt
+ def profile():
+    if 'username' in session:
+       username = session['username']
+@@ -154,6 +162,7 @@ def profile():
+ ### updates the user profile
+ ### redirects to profile
+ @app.route('/update_profile', methods=["POST"])
++@csrf.exempt
+ def update_profile():
+    global current_user
+    
+@@ -379,6 +388,7 @@ def pending_requests():
+ ### in[GET]: search_query
+ ### searchs user's friends that match the search query
+ @app.route('/friends', methods=["GET"])
++@csrf.exempt
+ def friends():
+    if 'username' in session:
+       username = session['username']
+diff --git a/facefive/requirements.txt b/facefive/requirements.txt
+--- a/facefive/requirements.txt
++++ b/facefive/requirements.txt
+@@ -1,4 +1,5 @@
+ Flask
+ flask_mysqldb
++flask_wtf
+ werkzeug
+
+-- 
+2.25.1
+

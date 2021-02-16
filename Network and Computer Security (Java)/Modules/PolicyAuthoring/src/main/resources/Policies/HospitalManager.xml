@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Policy xmlns="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17" PolicyId="urn:oasis:names:tc:xacml:3.0:policyid:HospitalManager" RuleCombiningAlgId="urn:oasis:names:tc:xacml:3.0:rule-combining-algorithm:deny-unless-permit" Version="1.0">
+  <Target>
+    <AnyOf>
+      <AllOf>
+        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">HospitalManager</AttributeValue>
+          <AttributeDesignator Category="urn:oasis:names:tc:xacml:3.0::subjectcategory:accesssubject" AttributeId="urn:oasis:names:tc:xacml:1.0:subject:subject-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </Match>
+      </AllOf>
+    </AnyOf>
+  </Target>
+  <Rule Effect="Permit" RuleId="rule_1">
+    <Target />
+  </Rule>
+</Policy>

@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option csharp_namespace = "ClientGStore";
+
+package gstore;
+
+service GStoreServices {
+	rpc Read(ReadRequest) returns (ReadReply);
+	rpc Write(WriteRequest) returns (WriteReply);
+	rpc ListServer(ListServerRequest) returns (ListServerReply);
+}
+
+message ReadRequest {
+	string idPart = 1;
+	string idObj = 2;
+}
+
+message ReadReply {
+	string val = 1;
+	int32 tag = 2;
+}
+
+message WriteRequest {
+	string idPart = 1;
+	string idObj = 2;
+	string val = 3;
+}
+
+message WriteReply {
+	string mid = 1;
+}
+
+message ListServerRequest {}
+
+message ListServerReply {
+	map<string, string> objs = 1;
+}

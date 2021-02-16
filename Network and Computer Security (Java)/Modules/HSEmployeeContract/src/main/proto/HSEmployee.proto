@@ -1,0 +1,216 @@
+syntax = "proto3";
+package ist.sirs.mtr.proto.hse;
+import "google/protobuf/timestamp.proto";
+
+/*==========================
+| Hospital Server Services |
+==========================*/
+service HSEmployeeServices {
+  rpc Login(LoginRequest) returns (LoginReply);
+  rpc Read(ReadRequest) returns (ReadReply);
+  rpc Write(WriteRequest) returns (WriteReply);
+  rpc TResAuth(TResAuthRequest) returns (TResAuthReply);
+  rpc Logout(LogoutRequest) returns (LogoutReply);
+  rpc CreateUser(CreateUserRequest) returns (CreateUserReply);
+  rpc CreatePatient(CreatePatientRequest) returns (CreatePatientReply);
+  rpc PatientDetails(PatientDetailsRequest) returns (PatientDetailsReply);
+  rpc ChangeMode(ChangeModeRequest) returns (ChangeModeReply);
+  rpc CheckMode(CheckModeRequest) returns (CheckModeReply);
+}
+
+/*=========
+| Defines |
+=========*/
+enum PatientRecordType {
+  TestResultsRecords = 0;
+  HousekeepingRecords = 1;
+  DietRecords = 2;
+  TransportsRecords = 3;
+  ReceptionRecords = 4;
+  PrescriptionRecords = 5;
+}
+
+enum Role {
+  HospitalManager = 0;
+  LaboratoryTechnician = 1;
+  WardClerk = 2;
+  Porter = 3;
+  PatientServicesAssistant = 4;
+  ClinicalAssistant = 5;
+  Nurse = 6;
+  Doctor = 7;
+  Employee = 8;
+  PartnerLab = 9;
+}
+
+enum Mode {
+  Regular = 0;
+  Pandemic = 1;
+}
+
+message Patient {
+  // Patient Id
+  int32 pid = 1;
+  // Patient Nif
+  int32 nif = 2;
+  // Patient Name
+  string name = 3;
+}
+
+message PatientRecord {
+  // Record Id
+  int32 recId = 1;
+  // Record Content
+  string recCont = 2;
+  // Record Date
+  google.protobuf.Timestamp recTs = 3;
+}
+
+/*================
+| Login Messages |
+================*/
+message LoginRequest {
+  // Employee Username
+  string uname = 1;
+  // Employee Password
+  string pwd = 2;
+}
+
+message LoginReply {
+  // Session Id (Access Token)
+  string accTok = 1;
+  // Employee Role
+  Role role = 2;
+}
+
+/*===============
+| Read Messages |
+===============*/
+message ReadRequest {
+  // Session Id (Access Token)
+  string accTok = 1;
+  // Patient Id
+  int32 pid = 2;
+  // Patient Record Type
+  PatientRecordType recType = 3;
+  // Records Since (...)
+  google.protobuf.Timestamp recTs = 4;
+}
+
+message ReadReply {
+  // Patient Records
+  repeated PatientRecord recs = 1;
+}
+
+/*================
+| Write Messages |
+================*/
+message WriteRequest {
+  // Session Id (Access Token)
+  string accTok = 1;
+  // Patient Id
+  int32 pid = 2;
+  // Record Type
+  PatientRecordType recType = 3;
+  // Record Content
+  string recCont = 4;
+}
+
+message WriteReply {}
+
+/*===================
+| TResAuth Messages |
+===================*/
+message TResAuthRequest {
+  // Session Id (Access Token)
+  string accTok = 1;
+  // Patient Id
+  int32 pid = 2;
+  // Record Id
+  int32 recId = 3;
+}
+
+message TResAuthReply {
+  // Lab Signature
+  bytes labSig = 1;
+  // Lab Certificate
+  bytes labCrt = 2;
+}
+
+/*=================
+| Logout Messages |
+=================*/
+message LogoutRequest {
+  // Session Id (Access Token)
+  string accTok = 1;
+}
+
+message LogoutReply {}
+
+/*=====================
+| CreateUser Messages |
+=====================*/
+message CreateUserRequest {
+  // Session Id (Access Token)
+  string accTok = 1;
+  // Employee Username
+  string uname = 2;
+  // Employee Password
+  string pwd = 3;
+  // Role
+  Role role = 4;
+}
+
+message CreateUserReply {}
+
+/*========================
+| CreatePatient Messages |
+========================*/
+message CreatePatientRequest {
+  // Session Id (Access Token)
+  string accTok = 1;
+  // Patient Nif
+  int32 nif = 2;
+  // Patient Name
+  string name = 3;
+}
+
+message CreatePatientReply {
+  Patient pat = 1;
+}
+
+/*=========================
+| PatientDetails Messages |
+=========================*/
+message PatientDetailsRequest {
+  // Session Id (Access Token)
+  string accTok = 1;
+  Patient pat = 2;
+}
+
+message PatientDetailsReply {
+  repeated Patient pats = 1;
+}
+
+/*=====================
+| ChangeMode Messages |
+=====================*/
+message ChangeModeRequest {
+  // Session Id (Access Token)
+  string accTok = 1;
+  Mode mode = 2;
+}
+
+message ChangeModeReply {}
+
+/*====================
+| CheckMode Messages |
+====================*/
+message CheckModeRequest {
+  // Session Id (Access Token)
+  string accTok = 1;
+}
+
+message CheckModeReply {
+  Mode mode = 2;
+}

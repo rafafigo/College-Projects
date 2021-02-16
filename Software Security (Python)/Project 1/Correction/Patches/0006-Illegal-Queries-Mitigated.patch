@@ -1,0 +1,38 @@
+Subject: [PATCH 6/6] Illegal Queries Mitigated
+
+---
+ facefive/app/model.py | 12 ++++++++++--
+ 1 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/facefive/app/model.py b/facefive/app/model.py
+--- a/facefive/app/model.py
++++ b/facefive/app/model.py
+@@ -80,7 +79,11 @@ def init_db():
+ # SELECT QUERIES
+ def get_all_results(q, params):
+     cur = mysql.connection.cursor()
+-    cur.execute(q, params)
++    try:
++        cur.execute(q, params)
++    except mysql.connection.DatabaseError as e:
++        e.args = ("Database Error!",)
++        raise
+     mysql.connection.commit()
+     data = cur.fetchall()
+     cur.close()
+@@ -90,7 +93,11 @@ def get_all_results(q, params):
+ # UPDATE and INSERT QUERIES
+ def commit_results(q, params):
+     cur = mysql.connection.cursor()
+-    cur.execute(q, params)
++    try:
++        cur.execute(q, params)
++    except mysql.connection.DatabaseError as e:
++        e.args = ("Database Error!",)
++        raise
+     mysql.connection.commit()
+     cur.close()
+ 
+-- 
+2.25.1
+

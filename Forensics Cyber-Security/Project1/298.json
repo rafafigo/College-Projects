@@ -1,0 +1,59 @@
+{
+  "advisory": {
+    "id": 298,
+    "cwe": "CWE-818"
+  },
+  "correct_cwe": "CWE-818",
+  "correct_package_link": "https://registry.npmjs.org/openframe-ascii-image/-/openframe-ascii-image-0.1.0.tgz",
+  "vulnerability": {
+    "vulnerability_location": [
+      {
+        "source": {
+          "file": "install.sh",
+          "lineno": 26,
+          "code": "wget http://download.savannah.nongnu.org/releases/fbi-improved/fim-0.5-rc1.tar.gz"
+        },
+        "sink": {
+          "file": "install.sh",
+          "lineno": 38,
+          "code": "make"
+        }
+      }
+    ],
+    "fail_reason": ""
+  },
+  "patch": [
+    {
+      "file_path": "298.patch.md"
+    }
+  ],
+  "tools": {
+    "codeql": {
+      "score": "D"
+    },
+    "njsscan": {
+      "score": "E"
+    },
+    "graudit": {
+      "score": "D"
+    },
+    "insidersec": {
+      "score": "D"
+    },
+    "eslint": {
+      "score": "D"
+    },
+    "appinspector": {
+      "score": "B"
+    },
+    "msdevskim": {
+      "score": "A"
+    },
+    "drek": {
+      "score": "D"
+    },
+    "mosca": {
+      "score": "D"
+    }
+  }
+}

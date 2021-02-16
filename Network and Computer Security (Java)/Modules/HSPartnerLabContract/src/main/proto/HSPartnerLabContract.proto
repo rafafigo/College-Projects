@@ -1,0 +1,156 @@
+syntax = "proto3";
+package ist.sirs.mtr.proto.hspl;
+
+
+/*==========================
+| Hospital Server Services |
+==========================*/
+service HSPartnerLabServices {
+  rpc Hello(HelloRequest) returns (HelloReply);
+  rpc DH(DHRequest) returns (DHReply);
+  rpc Login(LoginRequest) returns (LoginReply);
+  rpc SubmitTResults(SubmitTResultsRequest) returns (SubmitTResultsReply);
+  rpc PatientDetails(PatientDetailsRequest) returns (PatientDetailsReply);
+  rpc Logout(LogoutRequest) returns (LogoutReply);
+}
+
+/*=========
+| Defines |
+=========*/
+message SecureMessage {
+  // TimeStamp
+  int64 ts = 1;
+  // Nonce
+  bytes nonce = 2;
+  // Integrity (Hmac | Signature)
+  bytes integrity = 3;
+  // IV
+  bytes iv = 4;
+}
+
+message Patient {
+  // Patient Id Encrypted
+  bytes encryptedPid = 1;
+  // Patient Nif Encrypted
+  bytes encryptedNif = 2;
+  // Patient Name Encrypted
+  bytes encryptedName = 3;
+}
+
+message TResult {
+  // Patient Id Encrypted
+  bytes encryptedPid = 1;
+  // Content Encrypted
+  bytes encryptedCont = 2;
+  // TS Encrypted
+  bytes encryptedTs = 3;
+  // Partner Lab Signature Encrypted
+  bytes encryptedSignature = 4;
+}
+
+/*================
+| Hello Messages |
+================*/
+message HelloRequest {
+  // Partner Lab Certificate
+  bytes crt = 1;
+}
+
+message HelloReply {
+  // Session Id (Access Token)
+  string accToken = 1;
+  // Hospital Server Certificate
+  bytes crt = 2;
+  // Secure Message
+  SecureMessage secure = 3;
+}
+
+/*=============
+| DH Messages |
+=============*/
+message DHRequest {
+  // Session Id (Access Token)
+  string accTok = 1;
+  // P Encrypted
+  bytes encryptedP = 2;
+  // G Encrypted
+  bytes encryptedG = 3;
+  // Y Partner Lab Encrypted
+  bytes encryptedYPL = 4;
+  // Secure Message
+  SecureMessage secure = 5;
+}
+
+message DHReply {
+  // Y Hospital Server Encrypted
+  bytes encryptedYHS = 2;
+  // Secure Message
+  SecureMessage secure = 3;
+}
+
+/*================
+| Login Messages |
+================*/
+message LoginRequest {
+  // Session Id (Access Token)
+  string accTok = 1;
+  // Username Encrypted
+  bytes encryptedUname = 2;
+  // Password Encrypted
+  bytes encryptedPwd = 3;
+  // Secure Message
+  SecureMessage secure = 4;
+}
+
+message LoginReply {
+  SecureMessage secure = 1;
+}
+
+/*=========================
+| SubmitTResults Messages |
+=========================*/
+message SubmitTResultsRequest {
+  // Session Id (Access Token)
+  string accTok = 1;
+  // Patient Id & Record Content Encrypted
+  repeated TResult encryptedTResults = 2;
+  // Secure Message
+  SecureMessage secure = 3;
+}
+
+message SubmitTResultsReply {
+  SecureMessage secure = 1;
+}
+
+/*=========================
+| PatientDetails Messages |
+=========================*/
+message PatientDetailsRequest {
+  // Session Id (Access Token)
+  string accTok = 1;
+  // Patient Encrypted
+  Patient encryptedPat = 2;
+  // Secure Message
+  SecureMessage secure = 3;
+}
+
+message PatientDetailsReply {
+  // Patient List
+  repeated Patient pats = 1;
+  // Secure Message
+  SecureMessage secure = 3;
+}
+
+/*=================
+| Logout Messages |
+=================*/
+message LogoutRequest {
+  // Session Id (Access Token)
+  string accTok = 1;
+  // Secure Message
+  SecureMessage secure = 2;
+}
+
+message LogoutReply {
+  SecureMessage secure = 1;
+}

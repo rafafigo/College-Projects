@@ -1,0 +1,12 @@
+Write p1 1 "First Val"
+Write p2 2 "Second Val"
+Write p1 3 "Third Val"
+Write p2 4 "Forth Val"
+Write p1 5 "Fifth Val"
+Write p2 6 "Sixth Val"
+ListServer s1
+ListServer s2
+Read p1 3 s1
+Read p2 6 -1
+Read p1 5 -1
+ListGlobal

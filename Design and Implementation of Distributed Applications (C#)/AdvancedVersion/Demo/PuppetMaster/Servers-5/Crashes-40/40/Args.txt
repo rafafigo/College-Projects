@@ -1,0 +1,23 @@
+ReplicationFactor 3
+Partition 3 p1 01 02 03
+Partition 3 p2 05 04 03
+Partition 3 p3 02 04 03
+Server 01 http://localhost:2001 0 0
+Server 02 http://localhost:2002 0 0
+Server 03 http://localhost:2003 0 0
+Server 04 http://localhost:2004 0 0
+Server 05 http://localhost:2005 0 0
+Wait 3000
+Crash 03
+Crash 04
+Client 5-40-40-01 http://localhost:3001 Clients/40/Script.txt
+Client 5-40-40-02 http://localhost:3002 Clients/40/Script.txt
+Client 5-40-40-03 http://localhost:3003 Clients/40/Script.txt
+Client 5-40-40-04 http://localhost:3004 Clients/40/Script.txt
+Client 5-40-40-05 http://localhost:3005 Clients/40/Script.txt
+Client 5-40-40-06 http://localhost:3006 Clients/40/Script.txt
+Client 5-40-40-07 http://localhost:3007 Clients/40/Script.txt
+Client 5-40-40-08 http://localhost:3008 Clients/40/Script.txt
+Client 5-40-40-09 http://localhost:3009 Clients/40/Script.txt
+Client 5-40-40-10 http://localhost:3010 Clients/40/Script.txt
+

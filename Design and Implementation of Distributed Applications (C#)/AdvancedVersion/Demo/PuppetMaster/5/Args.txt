@@ -1,0 +1,12 @@
+ReplicationFactor 3
+Partition 3 p1 s1 s2 s3
+Partition 3 p2 s3 s2 s1
+Server s1 http://localhost:2001 0 0
+Server s2 http://localhost:2002 0 0
+Server s3 http://localhost:2003 0 0
+Wait 3000
+Client c1 http://localhost:3001 Clients/6/Script.txt
+Client c2 http://localhost:3002 Clients/6/Script.txt
+Client c3 http://localhost:3003 Clients/6/Script.txt
+Client c4 http://localhost:3004 Clients/6/Script.txt
+Client c5 http://localhost:3005 Clients/6/Script.txt

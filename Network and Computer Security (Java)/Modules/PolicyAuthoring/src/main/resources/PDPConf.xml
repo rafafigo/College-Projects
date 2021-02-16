@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pdp xmlns="http://authzforce.github.io/core/xmlns/pdp/7" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="7">
+    <policyProvider id="policyProvider" xsi:type="StaticPolicyProvider">
+        <policyLocation>${PARENT_DIR}/Policies/*.xml</policyLocation>
+    </policyProvider>
+    <rootPolicyRef>urn:oasis:names:tc:xacml:3.0:policySetid:MTR</rootPolicyRef>
+</pdp>

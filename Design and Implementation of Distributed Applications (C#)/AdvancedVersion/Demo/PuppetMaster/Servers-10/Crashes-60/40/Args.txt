@@ -1,0 +1,32 @@
+ReplicationFactor 6
+Partition 6 p1 01 02 03 04 05 06
+Partition 6 p2 10 09 08 07 06 05
+Partition 6 p3 02 09 03 08 04 07
+Server 01 http://localhost:2001 0 0
+Server 02 http://localhost:2002 0 0
+Server 03 http://localhost:2003 0 0
+Server 04 http://localhost:2004 0 0
+Server 05 http://localhost:2005 0 0
+Server 06 http://localhost:2006 0 0
+Server 07 http://localhost:2007 0 0
+Server 08 http://localhost:2008 0 0
+Server 09 http://localhost:2009 0 0
+Server 10 http://localhost:2010 0 0
+Wait 3000
+Crash 03
+Crash 04
+Crash 05
+Crash 06
+Crash 07
+Crash 08
+Client 10-60-40-01 http://localhost:3001 Clients/40/Script.txt
+Client 10-60-40-02 http://localhost:3002 Clients/40/Script.txt
+Client 10-60-40-03 http://localhost:3003 Clients/40/Script.txt
+Client 10-60-40-04 http://localhost:3004 Clients/40/Script.txt
+Client 10-60-40-05 http://localhost:3005 Clients/40/Script.txt
+Client 10-60-40-06 http://localhost:3006 Clients/40/Script.txt
+Client 10-60-40-07 http://localhost:3007 Clients/40/Script.txt
+Client 10-60-40-08 http://localhost:3008 Clients/40/Script.txt
+Client 10-60-40-09 http://localhost:3009 Clients/40/Script.txt
+Client 10-60-40-10 http://localhost:3010 Clients/40/Script.txt
+

@@ -1,0 +1,6 @@
+SERVER s1 http://localhost:8081 0 100
+PARTITION 2 p1 s1 s2
+PARTITION 2 p2 s2 s3
+SERVER s1 http://localhost:8081
+SERVER s2 http://localhost:8082
+SERVER s3 http://localhost:8083

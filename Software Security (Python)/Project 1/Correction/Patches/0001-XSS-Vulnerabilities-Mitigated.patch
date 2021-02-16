@@ -1,0 +1,77 @@
+Subject: [PATCH 1/6] XSS Vulnerabilities Mitigated:
+Vulnerability 15 Mitigated
+Vulnerability 16 Mitigated
+Vulnerability 17 Mitigated
+Vulnerability 18 Mitigated
+Vulnerability 19 Mitigated
+Vulnerability 20 Mitigated
+Vulnerability 21 Mitigated
+Vulnerability 22 Mitigated
+Vulnerability 23 Mitigated
+Vulnerability 24 Mitigated
+Vulnerability 25 Mitigated
+Vulnerability 31 Mitigated
+
+---
+ facefive/app/templates/friends.html          | 2 --
+ facefive/app/templates/home.html             | 2 --
+ facefive/app/templates/pending_requests.html | 2 --
+ 3 files changed, 6 deletions(-)
+
+diff --git a/facefive/app/templates/friends.html b/facefive/app/templates/friends.html
+--- a/facefive/app/templates/friends.html
++++ b/facefive/app/templates/friends.html
+@@ -22,7 +22,6 @@
+     </div>
+     <i>Found {{ friends|length }} friends in the search</i><br><br>
+ </div>
+-  {% autoescape false %}
+   <!-- Friend  -->
+   {% for friend in friends %}
+     <!-- friend -->
+@@ -36,6 +32,5 @@
+       <hr class="half-rule" color="grey" />
+     {% endif %}
+   {% endfor %}
+-  {% endautoescape %}
+ {% endblock %}
+
+diff --git a/facefive/app/templates/home.html b/facefive/app/templates/home.html
+--- a/facefive/app/templates/home.html
++++ b/facefive/app/templates/home.html
+@@ -23,7 +23,6 @@
+ <hr class="half-rule" color="white"/>
+ 
+ <!-- posts -->
+-{% autoescape false %}
+ {% for post in posts %}
+   <!-- post -->
+   <div class="row border border-dark rounded ml-1 mr-1" style="border-width:2px !important;">
+@@ -41,6 +40,5 @@
+     <hr class="half-rule" color="grey" />
+   {% endif %}
+ {% endfor %}
+-{% endautoescape %}
+ 
+ {% endblock %}
+diff --git a/facefive/app/templates/pending_requests.html b/facefive/app/templates/pending_requests.html
+--- a/facefive/app/templates/pending_requests.html
++++ b/facefive/app/templates/pending_requests.html
+@@ -16,7 +16,6 @@
+ 
+ <i>{{ friends_pending|length }} friendship requests need your answer</i><br><br>
+   <!-- Friend requests -->
+-  {% autoescape false %}
+   {% for tentative_friend in friends_pending %}
+     <!-- request -->
+     <div class="row border border-dark rounded ml-1 mr-1" style="border-width:2px !important;">
+@@ -31,6 +30,5 @@
+       <hr class="half-rule" color="grey" />
+     {% endif %}
+   {% endfor %}
+-  {% endautoescape %}
+ {% endblock %}
+
+-- 
+2.25.1
+

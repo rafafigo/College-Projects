@@ -1,0 +1,81 @@
+Subject: [PATCH 3/6] Possible XSS By Attribute Injection Mitigated
+
+---
+ facefive/app/templates/edit_post.html        | 2 +-
+ facefive/app/templates/friends.html          | 2 +-
+ facefive/app/templates/home.html             | 4 ++--
+ facefive/app/templates/pending_requests.html | 4 ++--
+ facefive/app/templates/profile.html          | 2 +-
+ 5 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/facefive/app/templates/edit_post.html b/facefive/app/templates/edit_post.html
+--- a/facefive/app/templates/edit_post.html
++++ b/facefive/app/templates/edit_post.html
+@@ -15,7 +15,7 @@
+               <fieldset>
+                 <legend>Edit the Content for your post</legend>
+                 <hr class="half-rule" color="grey" />
+-                <input type="hidden" name="id" value= {{ post.id }} /> 
++                <input type="hidden" name="id" value="{{ post.id }}" />
+                 <div class="form-group">
+                   <label for="contentArea">Content.</label>
+                   <textarea class="form-control" name="content" id="contentArea" rows="10">{{ post.content }}</textarea>
+diff --git a/facefive/app/templates/friends.html b/facefive/app/templates/friends.html
+--- a/facefive/app/templates/friends.html
++++ b/facefive/app/templates/friends.html
+@@ -26,7 +26,7 @@
+   {% for friend in friends %}
+     <!-- friend -->
+     <div class="row border border-dark rounded ml-1 mr-1" style="border-width:2px !important;">
+-      <a class="ml-2 mr-2 mt-1 mb-1"><h4><img src = {{ photos_folder + friend.photo}} alt="" width="50" height="50">{{ friend.username }} : {{ friend.name }}</h4> {{ friend.about }}</a>
++      <a class="ml-2 mr-2 mt-1 mb-1"><h4><img src="{{ photos_folder + friend.photo}}" alt="" width="50" height="50">{{ friend.username }} : {{ friend.name }}</h4> {{ friend.about }}</a>
+     </div>
+     {% if not loop.last %}
+       <hr class="half-rule" color="grey" />
+diff --git a/facefive/app/templates/home.html b/facefive/app/templates/home.html
+--- a/facefive/app/templates/home.html
++++ b/facefive/app/templates/home.html
+@@ -26,10 +26,10 @@
+ {% for post in posts %}
+   <!-- post -->
+   <div class="row border border-dark rounded ml-1 mr-1" style="border-width:2px !important;">
+-                <a class="ml-2 mr-2 mt-1 mb-1"><h4><img src = {{ photos_folder + post.photo}} alt="" width="50" height="50">{{ post.author }} : {{ post.name }} 
++                <a class="ml-2 mr-2 mt-1 mb-1"><h4><img src="{{ photos_folder + post.photo}}" alt="" width="50" height="50">{{ post.author }} : {{ post.name }}
+                     {% if post.author == current_user.username %}
+                     <form class="form-horizontal" action="/edit_post" method="get">
+-                        <input type="hidden" name="id" value= {{ post.id }} /> 
++                        <input type="hidden" name="id" value="{{ post.id }}" />
+                         <button type="submit" class="btn btn-success">Edit this post</button>
+                     </form>
+                     {% endif %}
+diff --git a/facefive/app/templates/pending_requests.html b/facefive/app/templates/pending_requests.html
+--- a/facefive/app/templates/pending_requests.html
++++ b/facefive/app/templates/pending_requests.html
+@@ -19,10 +19,10 @@
+   {% for tentative_friend in friends_pending %}
+     <!-- request -->
+     <div class="row border border-dark rounded ml-1 mr-1" style="border-width:2px !important;">
+-      <a class="ml-2 mr-2 mt-1 mb-1"><h4><img src = {{ photos_folder + tentative_friend.photo}} alt="" width="50" height="50">{{ tentative_friend.username }} : {{ tentative_friend.name }}
++      <a class="ml-2 mr-2 mt-1 mb-1"><h4><img src="{{ photos_folder + tentative_friend.photo}}" alt="" width="50" height="50">{{ tentative_friend.username }} : {{ tentative_friend.name }}
+         <form class="form-horizontal" action="/pending_requests" method="post">
+           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+-          <input type="hidden" name="username" value= {{ tentative_friend.username }} /> 
++          <input type="hidden" name="username" value="{{ tentative_friend.username }}" />
+           <button type="submit" class="btn btn-success">Accept this friend</button>
+       </form></h4> 
+       {{ tentative_friend.about }}</a>
+diff --git a/facefive/app/templates/profile.html b/facefive/app/templates/profile.html
+--- a/facefive/app/templates/profile.html
++++ b/facefive/app/templates/profile.html
+@@ -12,7 +12,7 @@
+         <div class="col-6 bg-secondary">
+             <form class="mb-3" action="/update_profile" method="post" enctype = "multipart/form-data">
+                 <fieldset class="mt-2">
+-                    <legend> Edit Profile   <img src = {{ photos_folder + current_user.photo}} alt="" width="50" height="50"></legend>
++                    <legend> Edit Profile   <img src="{{ photos_folder + current_user.photo}}" alt="" width="50" height="50"></legend>
+                     <hr class="half-rule" color="grey" />
+                     <div class="form-group">
+                         <label for="nameInput">Username (readonly)</label>
+-- 
+2.25.1
+

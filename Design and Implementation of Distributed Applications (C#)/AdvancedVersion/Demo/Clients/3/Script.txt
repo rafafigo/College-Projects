@@ -1,0 +1,11 @@
+Write p1 o1 "p1-o1-v1"
+Read p1 o1 -1
+Read p2 o1 -1
+ListServer s1
+Wait 3000
+Begin-Repeat 5
+Write p2 o$i "p2-o$i-v1"
+Wait 1000
+End-Repeat
+Write p2 o6 "p2-o6-v1"
+ListGlobal

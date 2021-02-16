@@ -1,0 +1,62 @@
+syntax = "proto3";
+package ist.sirs.mtr.proto.hspa;
+
+/*===========================
+| Policy Authoring Services |
+===========================*/
+service HSPolicyAuthoringServices {
+  rpc Decide(DecideRequest) returns (DecideReply);
+}
+
+/*=========
+| Defines |
+=========*/
+enum Subject {
+  HospitalManager = 0;
+  LaboratoryTechnician = 1;
+  WardClerk = 2;
+  Porter = 3;
+  PatientServicesAssistant = 4;
+  ClinicalAssistant = 5;
+  Nurse = 6;
+  Doctor = 7;
+  Employee = 8;
+  PartnerLab = 9;
+}
+
+enum Resource {
+  TestResultsRecords = 0;
+  HousekeepingRecords = 1;
+  DietRecords = 2;
+  TransportsRecords = 3;
+  ReceptionRecords = 4;
+  PrescriptionRecords = 5;
+  EmployeeCredentials = 6;
+  PatientDetails = 7;
+  Mode = 8;
+}
+
+enum Action {
+  Read = 0;
+  Write = 1;
+  TestResultAuthenticityCheck = 2;
+}
+
+enum Environment {
+  Regular = 0;
+  Pandemic = 1;
+}
+
+/*=================
+| Decide Messages |
+=================*/
+message DecideRequest {
+  Subject subject = 1;
+  Resource resource = 2;
+  Action action = 3;
+  Environment environment = 4;
+}
+
+message DecideReply {
+  bool decision = 1;
+}

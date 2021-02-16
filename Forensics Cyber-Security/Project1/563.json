@@ -1,0 +1,67 @@
+{
+  "advisory": {
+    "id": 563,
+    "cwe": "CWE-94"
+  },
+  "correct_cwe": "CWE-94",
+  "correct_package_link": "https://registry.npmjs.org/electron/-/electron-1.6.16.tgz",
+  "vulnerability": {
+    "vulnerability_location": [
+      {
+        "source": {
+          "file": "install.js",
+          "lineno": 3,
+          "code": "var version = require('./package').version"
+        },
+        "sink": {
+          "file": "install.js",
+          "lineno": 27,
+          "code": "version: version,"
+        }
+      }
+    ],
+    "fail_reason": ""
+  },
+  "poc": [
+    {
+      "url": "https://www.exploit-db.com/exploits/43899"
+    },
+    {
+      "url": "https://www.exploit-db.com/exploits/44357"
+    }
+  ],
+  "patch": [
+    {
+      "url": "https://github.com/electron/electron/releases/tag/v1.8.2-beta.4"
+    }
+  ],
+  "tools": {
+    "codeql": {
+      "score": "D"
+    },
+    "njsscan": {
+      "score": "D"
+    },
+    "graudit": {
+      "score": "C"
+    },
+    "insidersec": {
+      "score": "D"
+    },
+    "eslint": {
+      "score": "D"
+    },
+    "appinspector": {
+      "score": "C"
+    },
+    "msdevskim": {
+      "score": "C"
+    },
+    "drek": {
+      "score": "D"
+    },
+    "mosca": {
+      "score": "D"
+    }
+  }
+}
