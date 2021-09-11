@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <!-- Shop Price -->
+    <TextView
+        android:id="@+id/itemform_shop"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/itemform_shopprice"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:labelFor="@+id/itemform_price"
+        android:maxLines="2"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/itemform_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:drawableEnd="@drawable/ic_euro_symbol"
+        android:drawablePadding="6dp"
+        android:gravity="end"
+        android:hint="@string/itemform_shopprice"
+        android:inputType="numberDecimal"
+        android:selectAllOnFocus="true"
+        android:textSize="16sp"
+        tools:ignore="LabelFor" />
+
+</LinearLayout>

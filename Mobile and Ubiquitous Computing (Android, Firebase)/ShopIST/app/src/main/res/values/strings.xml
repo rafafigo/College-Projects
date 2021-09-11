@@ -1,0 +1,149 @@
+<resources>
+    <string name="app_name">ShopIST</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="my_google_place_api_key">AIzaSyBrhvCS7QQoz8bHYrQq9pogvSIYEX3BQbg</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_shopping">Sopping Lists</string>
+    <string name="menu_pantry">Pantry Lists</string>
+    <string name="pantry_name">Temporary Pantry</string>
+    <string name="item_name">Item Name</string>
+    <string name="item_description">Description</string>
+    <string name="item_image">Image of the Item</string>
+    <string name="pantry_item_in_need">In Need</string>
+    <string name="pantry_item_in_pantry">In Pantry</string>
+    <string name="pantry_item_in_cart">In Cart</string>
+    <string name="pantry_item_in_need_value">0</string>
+    <string name="pantry_item_in_pantry_subtract">Subtract item from pantry</string>
+    <string name="pantry_item_in_pantry_add">Add item to pantry</string>
+    <string name="pantry_item_in_need_subtract">Subtract item in need</string>
+    <string name="pantry_item_in_need_add">Add item in need</string>
+    <string name="pantry_item_next_left">Previous item</string>
+    <string name="pantry_item_next_right">Next item</string>
+    <string name="cart_row_item_quantity">Quantity</string>
+    <string name="cart_row_item_price">Price</string>
+    <string name="add_all_to_cart">Add All To Cart</string>
+    <string name="edit_icon">Edit Icon</string>
+    <string name="profile_image_of_item">Profile Image of Item</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="remove_from_cart">Remove from Cart</string>
+    <string name="remove_all_from_cart">Remove all items from cart</string>
+    <string name="shopping_cart">Shopping Cart</string>
+    <string name="direction">Direction</string>
+    <string name="add">Add</string>
+    <string name="shopping_list">Shopping List</string>
+    <string name="cart_title">Shopping Cart</string>
+    <string name="cart_total_items">Total Items</string>
+    <string name="cart_total_price">Total Price</string>
+
+    <string name="itemform_name_label">Name:</string>
+    <string name="itemform_name">Pantry Item Name</string>
+    <string name="itemform_inpantry_label">In Pantry:</string>
+    <string name="itemform_inpantry">Available Quantity</string>
+    <string name="itemform_barcode_label">Barcode:</string>
+    <string name="itemform_barcode">Pantry Item Barcode</string>
+    <string name="itemform_show_shopprices">Prices:</string>
+    <string name="itemform_shopprice">Shop Price</string>
+    <string name="itemform_shopprice_searchbar">Shop Name</string>
+    <string name="itemform_add_pictures">Add Pictures:</string>
+    <string name="save_pantry_item">Save Pantry Item</string>
+    <string name="cancel_pantry_item">Cancel Pantry Item</string>
+    <string name="pantry_list_item_picture">Pantry Item Picture</string>
+    <string name="delete_pantry_list_item">Delete Pantry Item</string>
+    <string name="edit_pantry_list_item">Edit Pantry Item</string>
+    <string name="goto_cart">Goto Cart</string>
+    <string name="directions">Directions</string>
+    <string name="itemform_shop_price">Shop Price:</string>
+    <string name="itemform_inneed">Necessary Quantity</string>
+    <string name="itemform_inneed_label">In Need:</string>
+    <string name="pantryImage">PantryImage</string>
+    <string name="pantry_list">Pantry List</string>
+    <string name="pantry_image">Pantry Image</string>
+    <string name="homeDefaultBody">- 0 Created -</string>
+    <string name="pantry_lists">Pantry Lists</string>
+    <string name="nav_icon">Nav Icon</string>
+    <string name="list_id">1</string>
+    <string name="delete_icon">Delete Icon</string>
+    <string name="shopping_lists">Shopping Lists</string>
+    <string name="share_icon">Share Icon</string>
+    <string name="title">Title:</string>
+    <string name="localization">Localization:</string>
+    <string name="add_a_shopping_list">Add a Shopping List</string>
+    <string name="create">Create</string>
+    <string name="location">Location:</string>
+    <string name="name">Name</string>
+    <string name="name_of_the_list">Name of the List</string>
+    <string name="list_location">List Location</string>
+    <string name="location_of_the_list">Location of the List</string>
+    <string name="button_clear">Button Clear</string>
+    <string name="button_done">Button Done</string>
+    <string name="km">(…)</string>
+    <string name="pantry_item_locations">Locations</string>
+    <string name="pantry_item_location_name">Location Name</string>
+    <string name="pantry_item_location_price">Price</string>
+    <string name="preference_general">General</string>
+
+    <string-array name="idioms">
+        <item>English</item>
+        <item>Portuguese</item>
+    </string-array>
+
+    <string-array name="idioms_values">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails</string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="add_all_to_pantry">Add all to pantry</string>
+    <string name="change_theme">change_theme</string>
+    <string name="qr_code_scan">qr_code_scan</string>
+    <string name="default_page_location">default_page_location</string>
+    <string name="get_directions">Get Directions</string>
+    <string name="cancel">Cancel</string>
+    <string name="static_map">Static Map</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="account">Account</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="sign_in">Sign In</string>
+    <string name="register">Register</string>
+    <string name="pantrylistdeduct">PantryListDeduct</string>
+    <string name="upgrade_account">Upgrade Account</string>
+    <string name="action_sign_in">Sign In</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="cart_row_item_remove">Remove from cart</string>
+    <string name="pick_item_picture">Pick Item Picture</string>
+    <string name="new_user_email">New User Email</string>
+    <string name="user_email">User Email</string>
+    <string name="pantry_manage">Pantry Manage</string>
+    <string name="member_list">Member List</string>
+    <string name="pick_item">Pick Item</string>
+    <string name="remove_user">Remove User</string>
+    <string name="share_item">Share Item</string>
+    <string name="pantry_item_rating">Rating</string>
+    <string name="pantry_item_rating_text">Average Rating:</string>
+    <string name="pantry_item_rating_text_add_rating">Give your rating of this item:</string>
+    <string name="fullscreen_item_image">Fullscreen Item Image</string>
+    <string name="pantry_item_ratings_dialog_back">BAck</string>
+    <string name="pantry_item_average_rating_numeric">0.0</string>
+</resources>

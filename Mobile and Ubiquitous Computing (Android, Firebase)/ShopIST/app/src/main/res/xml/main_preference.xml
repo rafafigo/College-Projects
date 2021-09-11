@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="@string/preference_general">
+        <SwitchPreferenceCompat
+            android:icon="@drawable/ic_darkmode"
+            android:key="@string/change_theme"
+            android:title="Dark Theme"
+            app:defaultValue="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="App Startup">
+        <SwitchPreferenceCompat
+            android:icon="@drawable/ic_location"
+            android:key="@string/default_page_location"
+            android:title="Based on Location" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Sharing">
+        <Preference
+            android:icon="@drawable/ic_qrcode_scanner"
+            android:key="qr_code_scan"
+            android:title="QR Code Scan" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Account">
+        <Preference
+            android:icon="@drawable/ic_account"
+            android:key="@string/account"
+            android:title="Login" />
+    </PreferenceCategory>
+</PreferenceScreen>

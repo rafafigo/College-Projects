@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/fragment_horizontal_margin"
+    android:paddingTop="@dimen/fragment_vertical_margin"
+    android:paddingRight="@dimen/fragment_horizontal_margin"
+    android:paddingBottom="@dimen/fragment_vertical_margin"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="parent"
+    tools:context=".ui.common.itemform.ItemFormFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/itemform_cl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Pantry Item Name -->
+        <TextView
+            android:id="@+id/itemform_name_label"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="@string/itemform_name_label"
+            android:gravity="center_vertical"
+            android:labelFor="@+id/itemform_name"
+            android:text="@string/itemform_name_label"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/itemform_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/itemform_name"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="24dp"
+            android:autofillHints=""
+            android:hint="@string/itemform_name"
+            android:inputType="text"
+            android:maxLength="30"
+            android:selectAllOnFocus="true"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itemform_name_label"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="LabelFor" />
+
+        <!-- Pantry Item In Pantry Quantity -->
+        <TextView
+            android:id="@+id/itemform_inpantry_label"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="@string/itemform_inpantry_label"
+            android:gravity="center_vertical"
+            android:labelFor="@+id/itemform_inpantry"
+            android:text="@string/itemform_inpantry_label"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/itemform_inpantry"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itemform_name_label" />
+
+        <EditText
+            android:id="@+id/itemform_inpantry"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:autofillHints=""
+            android:hint="@string/itemform_inpantry"
+            android:inputType="number"
+            android:selectAllOnFocus="true"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itemform_inpantry_label"
+            app:layout_constraintTop_toBottomOf="@+id/itemform_name"
+            tools:ignore="LabelFor" />
+
+        <!-- Pantry Item In Need Quantity -->
+        <TextView
+            android:id="@+id/itemform_inneed_label"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="@string/itemform_inneed_label"
+            android:gravity="center_vertical"
+            android:labelFor="@+id/itemform_inneed"
+            android:text="@string/itemform_inneed_label"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/itemform_inneed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itemform_inpantry_label" />
+
+        <EditText
+            android:id="@+id/itemform_inneed"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:autofillHints=""
+            android:hint="@string/itemform_inneed"
+            android:inputType="number"
+            android:selectAllOnFocus="true"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itemform_inneed_label"
+            app:layout_constraintTop_toBottomOf="@+id/itemform_inpantry"
+            tools:ignore="LabelFor" />
+
+        <EditText
+            android:id="@+id/itemform_barcode"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:autofillHints=""
+            android:hint="@string/itemform_barcode"
+            android:inputType="number"
+            android:selectAllOnFocus="true"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itemform_barcode_label"
+            app:layout_constraintTop_toBottomOf="@+id/itemform_inneed"
+            tools:ignore="LabelFor" />
+
+        <!-- Pantry Item Barcode -->
+        <TextView
+            android:id="@+id/itemform_barcode_label"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="@string/itemform_barcode_label"
+            android:gravity="center_vertical"
+            android:labelFor="@+id/itemform_barcode"
+            android:text="@string/itemform_barcode_label"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/itemform_barcode"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itemform_inneed_label" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/itemform_shopprice_cl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/itemform_add_pictures"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itemform_barcode_label">
+
+            <!-- Single Shop Price -->
+            <TextView
+                android:id="@+id/itemform_shopprice_label"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="12dp"
+                android:contentDescription="@string/itemform_shop_price"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:labelFor="@+id/itemform_shopprice"
+                android:maxLines="2"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/itemform_shopprice"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/itemform_shopprice"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="24dp"
+                android:autofillHints=""
+                android:drawableEnd="@drawable/ic_euro_symbol"
+                android:drawablePadding="6dp"
+                android:hint="@string/itemform_shopprice"
+                android:inputType="numberDecimal"
+                android:selectAllOnFocus="true"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/itemform_shopprice_label"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="LabelFor" />
+
+            <!-- Multiple Shop Prices -->
+            <TextView
+                android:id="@+id/itemform_show_shopprices"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:labelFor="@+id/itemform_shopprices"
+                android:text="@string/itemform_show_shopprices"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="16sp"
+                app:drawableRightCompat="@drawable/ic_keyboard_arrow_down"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/itemform_shopprices_searchbar"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
+                android:autofillHints=""
+                android:drawableEnd="@drawable/ic_search"
+                android:hint="@string/itemform_shopprice_searchbar"
+                android:inputType="text"
+                android:selectAllOnFocus="true"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itemform_show_shopprices" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/itemform_shopprices"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
+                app:layoutManager="LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/itemform_shopprices_searchbar"
+                tools:listitem="@layout/fragment_itemform_shopprice" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Pantry Item Images -->
+        <TextView
+            android:id="@+id/itemform_add_pictures"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="12dp"
+            android:gravity="center_vertical"
+            android:labelFor="@+id/itemform_camera"
+            android:text="@string/itemform_add_pictures"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/itemform_camera"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itemform_shopprice_cl" />
+
+        <ImageView
+            android:id="@+id/itemform_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="12dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:contentDescription="@string/itemform_add_pictures"
+            android:focusable="true"
+            app:layout_constraintEnd_toStartOf="@+id/itemform_gallery"
+            app:layout_constraintStart_toEndOf="@+id/itemform_add_pictures"
+            app:layout_constraintTop_toBottomOf="@+id/itemform_shopprice_cl"
+            app:srcCompat="@drawable/ic_add_a_photo" />
+
+        <ImageView
+            android:id="@+id/itemform_gallery"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="12dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:contentDescription="@string/itemform_add_pictures"
+            android:focusable="true"
+            app:layout_constraintEnd_toStartOf="@+id/itemform_pictures_nr"
+            app:layout_constraintStart_toEndOf="@+id/itemform_camera"
+            app:layout_constraintTop_toBottomOf="@+id/itemform_shopprice_cl"
+            app:srcCompat="@drawable/ic_collections" />
+
+        <TextView
+            android:id="@+id/itemform_pictures_nr"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:gravity="center_vertical|end"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itemform_gallery"
+            app:layout_constraintTop_toBottomOf="@+id/itemform_shopprice_cl" />
+
+        <HorizontalScrollView
+            android:id="@+id/itemform_pictures"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/itemform_done"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itemform_add_pictures">
+
+            <LinearLayout
+                android:id="@+id/itemform_pictures_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+        </HorizontalScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/itemform_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="@string/cancel_pantry_item"
+            app:backgroundTint="@color/red_dark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_clear"
+            app:tint="@color/white" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/itemform_done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="@string/save_pantry_item"
+            app:backgroundTint="@color/green_dark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_done"
+            app:tint="@color/white" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

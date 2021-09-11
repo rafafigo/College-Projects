@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/pantry_item_ratings_dialog"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.taufiqrahman.reviewratings.RatingReviews
+        android:id="@+id/pantry_item_ratings_dialog_histogram"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        app:animation="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:max_value="100"
+        app:rounded="false"
+        app:show_label="true"
+        app:show_raters="true"
+        app:spaces="10dp"
+        app:text_color="@color/textColorPrimary"
+        app:text_size="10sp"
+        app:width="12dp" />
+
+    <TextView
+        android:id="@+id/pantry_item_ratings_dialog_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/pantry_item_rating_text_add_rating"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pantry_item_ratings_dialog_histogram" />
+
+    <RatingBar
+        android:id="@+id/pantry_item_ratings_dialog_user_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:isIndicator="false"
+        android:max="5"
+        android:numStars="5"
+        android:progressTint="@color/quantum_amber500"
+        android:rating="0"
+        android:stepSize="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pantry_item_ratings_dialog_text" />
+
+    <Button
+        android:id="@+id/pantry_item_ratings_dialog_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/pantry_item_ratings_dialog_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pantry_item_ratings_dialog_user_rating" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

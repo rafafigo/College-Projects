@@ -1,0 +1,75 @@
+syntax = "proto3";
+package pt.tecnico.ulisboa.hds.hdlt.contract.hs;
+
+/*====================
+| HA-Server Services |
+====================*/
+service HAServerServices {
+  rpc ObtainUL(ObtainULReq) returns (ObtainULRep);
+  rpc ObtainUAtL(ObtainUAtLReq) returns (ObtainUAtLRep);
+}
+
+/*=============
+| Definitions |
+=============*/
+message Header {
+  string uname = 1;
+  int32 epoch = 2;
+  bytes nonce = 3;
+  bytes iv = 4;
+}
+
+message Proof {
+  string uname = 1;
+  bytes signature = 2;
+}
+
+/*===================
+| ObtainUL Messages |
+===================*/
+message ObtainULReqPayload {
+  string uname = 1;
+}
+
+message ObtainULReq {
+  Header header = 1;
+  bytes cipheredPayload = 2;
+  bytes hmac = 3;
+}
+
+message ObtainULRepPayload {
+  // Location
+  int32 x = 1;
+  int32 y = 2;
+}
+
+message ObtainULRep {
+  bytes iv = 1;
+  bytes cipheredPayload = 2;
+  bytes hmac = 3;
+}
+
+/*=====================
+| ObtainUAtL Messages |
+=====================*/
+message ObtainUAtLReqPayload {
+  // Location
+  int32 x = 1;
+  int32 y = 2;
+}
+
+message ObtainUAtLReq {
+  Header header = 1;
+  bytes cipheredPayload = 2;
+  bytes hmac = 3;
+}
+
+message ObtainUAtLRepPayload {
+  repeated string unames = 1;
+}
+
+message ObtainUAtLRep {
+  bytes iv = 1;
+  bytes cipheredPayload = 2;
+  bytes hmac = 3;
+}

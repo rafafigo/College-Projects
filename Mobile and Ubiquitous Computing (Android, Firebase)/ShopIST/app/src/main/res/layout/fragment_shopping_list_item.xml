@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/shopping_list_items"
+    android:layout_width="match_parent"
+    android:layout_height="120dp">
+
+    <!-- Swipe Layout Left-->
+    <LinearLayout
+        android:id="@+id/shopping_list_item_swipe_l"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="0dp"
+            android:background="@color/cardview_dark_background">
+
+            <ImageView
+                android:id="@+id/shopping_lists_item_share"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/share_icon"
+                android:padding="10dp"
+                app:srcCompat="@drawable/ic_share" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/cart">
+
+            <ImageView
+                android:id="@+id/shopping_list_item_all_cart"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/add_all_to_cart"
+                android:padding="10dp"
+                app:srcCompat="@drawable/ic_add_all_cart" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- Swipe Layout Right-->
+    <FrameLayout
+        android:id="@+id/shopping_list_item_swipe_r"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="0dp"
+        android:background="@color/blue_icon">
+
+        <ImageView
+            android:id="@+id/shopping_list_item_edit"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="@string/edit_icon"
+            android:padding="10dp"
+            app:srcCompat="@drawable/ic_edit" />
+    </FrameLayout>
+
+    <!-- Main Layout -->
+    <FrameLayout
+        android:id="@+id/shopping_list_item_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:attr/selectableItemBackground">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/divider">
+
+            <ImageView
+                android:id="@+id/shopping_list_item_img"
+                android:layout_width="120dp"
+                android:layout_height="0dp"
+                android:contentDescription="@string/profile_image_of_item"
+                android:src="@drawable/default_item"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/shopping_list_item_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="6dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/item_name"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/shopping_list_item_action"
+                app:layout_constraintStart_toEndOf="@+id/shopping_list_item_img"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/shopping_list_item_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/cart_row_item_price"
+                android:textColor="@color/blue_ist"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/shopping_list_item_in_need"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="6dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/cart_row_item_quantity"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/shopping_list_item_action"
+                app:layout_constraintStart_toStartOf="@+id/shopping_list_item_name"
+                app:layout_constraintTop_toBottomOf="@+id/shopping_list_item_name" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/shopping_list_item_action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:clickable="true"
+                android:contentDescription="@string/add_to_cart"
+                android:focusable="true"
+                android:scaleType="center"
+                android:tint="@color/white"
+                app:backgroundTint="@color/blue_ist"
+                app:fabSize="mini"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/shopping_list_item_price"
+                app:srcCompat="@drawable/ic_add_cart"
+                app:tint="@color/white" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</com.daimajia.swipe.SwipeLayout>

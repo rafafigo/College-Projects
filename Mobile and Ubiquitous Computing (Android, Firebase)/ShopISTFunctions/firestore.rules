@@ -1,0 +1,56 @@
+rules_version = '2';
+service cloud.firestore {
+    match /databases/{database}/documents {
+        match /User/{id} {
+            allow read, write: if isAuth();
+        }
+        match /Pantry/{id} {
+            allow read, update, delete: if ownResources();
+            allow create: if isSingleOwner();
+        }
+        match /Shopping/{id} {
+            allow read, update, delete: if ownResources();
+            allow create: if isSingleOwner();
+        }
+        match /CrowdShopping/{id} {
+            allow read, create, update: if isAuth();
+            allow delete: if false;
+        }
+        match /Item/{id} {
+            allow read, write: if isAuth();
+        }
+        match /CrowdItem/{id} {
+            allow read: if isAuth();
+            allow create: if !existsBarcode(database);
+            allow update: if isSameBarcode() || !existsBarcode(database);
+            allow delete: if false;
+        }
+        match /Token/{document=**} {
+            allow read, write: if false;
+        }
+        match /Uniqueness/{document=**} {
+            allow read, write: if false;
+        }
+    }
+
+    function isAuth() {
+        return request.auth.uid != null;
+    }
+
+    function ownResources() {
+        return request.auth.uid in resource.data.Users;
+    }
+
+    function isSingleOwner() {
+        let owners = request.resource.data.Users;
+        return request.auth.uid in owners && owners.size() == 1;
+    }
+
+    function existsBarcode(database) {
+        return request.resource.data.Barcode in get(/databases/$(database)/documents/Uniqueness/CrowdItem).data.Barcodes;
+    }
+
+    function isSameBarcode() {
+        return request.resource.data.Barcode == resource.data.Barcode;
+    }
+}

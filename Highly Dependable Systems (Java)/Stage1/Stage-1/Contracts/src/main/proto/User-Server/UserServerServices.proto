@@ -1,0 +1,73 @@
+syntax = "proto3";
+package pt.tecnico.ulisboa.hds.hdlt.contract.us;
+
+/*======================
+| User-Server Services |
+======================*/
+service UserServerServices {
+  rpc SubmitULReport(SubmitULReportReq) returns (SubmitULReportRep);
+  rpc ObtainUL(ObtainULReq) returns (ObtainULRep);
+}
+
+/*=============
+| Definitions |
+=============*/
+message Header {
+  string uname = 1;
+  int32 epoch = 2;
+  bytes nonce = 3;
+  bytes iv = 4;
+}
+
+message Proof {
+  string uname = 1;
+  int32 epoch = 2;
+  // Location
+  int32 x = 3;
+  int32 y = 4;
+}
+
+message AuthProof {
+  string uname = 1;
+  bytes signedProof = 2;
+}
+
+/*=========================
+| SubmitULReport Messages |
+=========================*/
+message SubmitULReportReqPayload {
+  // Location
+  int32 x = 1;
+  int32 y = 2;
+  repeated AuthProof authProofs = 3;
+}
+
+message SubmitULReportReq {
+  Header header = 1;
+  bytes cipheredPayload = 2;
+  bytes hmac = 3;
+}
+
+message SubmitULReportRep {
+  bytes hmac = 1;
+}
+
+/*===================
+| ObtainUL Messages |
+===================*/
+message ObtainULReq {
+  Header header = 1;
+  bytes hmac = 3;
+}
+
+message ObtainULRepPayload {
+  // Location
+  int32 x = 1;
+  int32 y = 2;
+}
+
+message ObtainULRep {
+  bytes iv = 1;
+  bytes cipheredPayload = 2;
+  bytes hmac = 3;
+}

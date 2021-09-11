@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/shopping_lists_items"
+    android:layout_width="match_parent"
+    android:layout_height="110sp">
+
+    <!-- Swipe Layout Left-->
+    <FrameLayout
+        android:id="@+id/shopping_lists_item_swipe_l"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="0dp"
+        android:background="@color/cardview_dark_background">
+
+        <ImageView
+            android:id="@+id/shopping_lists_item_share"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="@string/share_icon"
+            android:padding="10dp"
+            app:srcCompat="@drawable/ic_qrcode" />
+    </FrameLayout>
+
+    <!-- Swipe Layout Right-->
+    <LinearLayout
+        android:id="@+id/shopping_lists_item_swipe_r"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="0dp"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/blue_icon">
+
+            <ImageView
+                android:id="@+id/shopping_lists_item_edit"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/edit_icon"
+                android:padding="10dp"
+                app:srcCompat="@drawable/ic_edit" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/red_icon">
+
+            <ImageView
+                android:id="@+id/shopping_lists_item_delete"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/delete_icon"
+                android:padding="10dp"
+                app:srcCompat="@drawable/ic_delete" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- Main Layout -->
+    <FrameLayout
+        android:id="@+id/shopping_list_item_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:attr/selectableItemBackground">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_divider"
+            android:padding="4dp">
+
+            <TextView
+                android:id="@+id/shopping_lists_item_nr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/shopping_lists_item_time"
+                app:layout_constraintStart_toEndOf="@+id/shopping_lists_item_id"
+                app:layout_constraintTop_toBottomOf="@+id/shopping_lists_item_location"
+                app:layout_constraintVertical_bias="0.464" />
+
+            <TextView
+                android:id="@+id/shopping_lists_item_id"
+                android:layout_width="12dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="8dp"
+                android:textColor="?attr/colorOnSurface"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/shopping_lists_item_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignWithParentIfMissing="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/shopping_lists_item_location"
+                app:layout_constraintEnd_toStartOf="@+id/shopping_lists_item_nav"
+                app:layout_constraintStart_toEndOf="@+id/shopping_lists_item_id"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/shopping_lists_item_nav"
+                android:layout_width="0dp"
+                android:layout_height="21dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="64dp"
+                android:contentDescription="@string/nav_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_map" />
+
+            <ImageView
+                android:id="@+id/shopping_lists_item_time"
+                android:layout_width="0dp"
+                android:layout_height="21dp"
+                android:layout_marginEnd="64dp"
+                android:layout_marginBottom="24dp"
+                android:contentDescription="@string/nav_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/time_icon" />
+
+            <TextView
+                android:id="@+id/shopping_lists_item_location"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/shopping_lists_item_nr"
+                app:layout_constraintEnd_toStartOf="@+id/shopping_lists_item_time"
+                app:layout_constraintStart_toEndOf="@+id/shopping_lists_item_id"
+                app:layout_constraintTop_toBottomOf="@+id/shopping_lists_item_name" />
+
+            <TextView
+                android:id="@+id/shopping_lists_item_distance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/km"
+                app:layout_constraintStart_toEndOf="@+id/shopping_lists_item_nav"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/shopping_lists_item_awaitTime"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginBottom="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/shopping_lists_item_time" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</com.daimajia.swipe.SwipeLayout>

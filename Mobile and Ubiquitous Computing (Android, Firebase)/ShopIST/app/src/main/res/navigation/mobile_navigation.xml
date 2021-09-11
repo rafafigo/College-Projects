@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="pt.ulisboa.tecnico.muc.shopist.ui.home.HomeFragment"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_home_to_pantry_lists"
+            app:destination="@id/nav_pantry_lists" />
+        <action
+            android:id="@+id/action_home_to_shopping_lists"
+            app:destination="@id/nav_shopping_lists" />
+        <action
+            android:id="@+id/action_home_to_pantry_list"
+            app:destination="@id/nav_pantry_list" />
+        <action
+            android:id="@+id/action_home_to_shopping_list"
+            app:destination="@id/nav_shopping_list" />
+        <action
+            android:id="@+id/action_home_to_item_form"
+            app:destination="@id/nav_item_form" />
+    </fragment>
+
+    <!-- Pantry -->
+    <fragment
+        android:id="@+id/nav_pantry_lists"
+        android:name="pt.ulisboa.tecnico.muc.shopist.ui.pantry.pantrylists.PantryListsFragment"
+        tools:layout="@layout/fragment_pantry_lists">
+
+        <action
+            android:id="@+id/action_pantry_lists_to_pantry_list"
+            app:destination="@id/nav_pantry_list" />
+        <action
+            android:id="@+id/action_pantry_lists_to_pantry_manage"
+            app:destination="@id/nav_pantry_manage" />
+        <action
+            android:id="@+id/action_pantry_lists_to_cart"
+            app:destination="@id/nav_cart" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_pantry_manage"
+        android:name="pt.ulisboa.tecnico.muc.shopist.ui.pantry.pantrymanage.PantryManageFragment"
+        tools:layout="@layout/fragment_pantrymanage_list" />
+
+    <fragment
+        android:id="@+id/nav_pantry_list"
+        android:name="pt.ulisboa.tecnico.muc.shopist.ui.pantry.pantrylist.PantryListFragment"
+        tools:layout="@layout/fragment_pantry_list">
+
+        <action
+            android:id="@+id/action_pantry_list_to_itemform"
+            app:destination="@id/nav_item_form" />
+        <action
+            android:id="@+id/action_pantry_list_to_pickitem"
+            app:destination="@id/nav_pick_item" />
+        <action
+            android:id="@+id/action_pantry_list_to_pantry_item"
+            app:destination="@id/nav_pantry_item" />
+        <action
+            android:id="@+id/action_pantry_list_to_cart"
+            app:destination="@id/nav_cart" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_pantry_item"
+        android:name="pt.ulisboa.tecnico.muc.shopist.ui.pantry.items.PantryItemFragment"
+        tools:layout="@layout/fragment_pantry_item">
+
+        <action
+            android:id="@+id/action_pantry_item_to_cart"
+            app:destination="@id/nav_cart" />
+        <action
+            android:id="@+id/action_pantry_item_to_item_image"
+            app:destination="@id/nav_item_image" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_item_image"
+        android:name="pt.ulisboa.tecnico.muc.shopist.ui.pantry.items.PantryItemImagesFragment"
+        tools:layout="@layout/fragment_pantry_item_image">
+
+    </fragment>
+
+    <!-- Item Creation -->
+
+    <fragment
+        android:id="@+id/nav_item_form"
+        android:name="pt.ulisboa.tecnico.muc.shopist.ui.common.itemform.ItemFormFragment"
+        tools:layout="@layout/fragment_itemform" />
+
+    <fragment
+        android:id="@+id/nav_pick_item"
+        android:name="pt.ulisboa.tecnico.muc.shopist.ui.common.pickitem.PickItemFragment"
+        tools:layout="@layout/fragment_pickitem_list">
+
+        <action
+            android:id="@+id/action_pickitem_to_itemform"
+            app:destination="@id/nav_item_form" />
+    </fragment>
+
+    <!-- Shopping -->
+    <fragment
+        android:id="@+id/nav_shopping_lists"
+        android:name="pt.ulisboa.tecnico.muc.shopist.ui.shopping.shoppinglists.ShoppingListsFragment"
+        tools:layout="@layout/fragment_shopping_lists">
+
+        <action
+            android:id="@+id/action_shopping_lists_to_shopping_list"
+            app:destination="@id/nav_shopping_list" />
+        <action
+            android:id="@+id/action_shopping_lists_to_cart"
+            app:destination="@id/nav_cart" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_shopping_list"
+        android:name="pt.ulisboa.tecnico.muc.shopist.ui.shopping.shoppinglist.ShoppingListFragment"
+        tools:layout="@layout/fragment_shopping_list">
+
+        <action
+            android:id="@+id/action_shopping_list_to_itemform"
+            app:destination="@id/nav_item_form" />
+        <action
+            android:id="@+id/action_shopping_list_to_pickitem"
+            app:destination="@id/nav_pick_item" />
+        <action
+            android:id="@+id/action_shopping_list_to_cart"
+            app:destination="@id/nav_cart" />
+    </fragment>
+
+    <!-- Cart -->
+    <fragment
+        android:id="@+id/nav_cart"
+        android:name="pt.ulisboa.tecnico.muc.shopist.ui.cart.CartFragment"
+        tools:layout="@layout/fragment_cart" />
+
+</navigation>

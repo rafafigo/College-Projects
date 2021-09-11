@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="start"
+            android:background="@drawable/ic_divider"
+            android:gravity="center"
+            android:text="@string/pantry_lists"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toTopOf="@+id/pantry_lists_pulltorefresh"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.baoyz.widget.PullRefreshLayout
+            android:id="@+id/pantry_lists_pulltorefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="80dp"
+            app:refreshType="material">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/pantry_lists_recycler"
+                android:name="pt.ulisboa.tecnico.muc.shopist.ui.pantry.PantryListsFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="LinearLayoutManager"
+                tools:context=".ui.pantry.pantrylists.PantryListsFragment"
+                tools:listitem="@layout/fragment_pantry_lists_item" />
+        </com.baoyz.widget.PullRefreshLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/pantry_lists_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|bottom"
+        android:layout_margin="10dp"
+        android:contentDescription="@string/goto_cart"
+        app:backgroundTint="@color/cart"
+        app:maxImageSize="30dp"
+        app:srcCompat="@drawable/ic_cart"
+        app:tint="@color/white" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/pantry_lists_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="10dp"
+        android:contentDescription="@string/add"
+        app:backgroundTint="@color/blue_ist"
+        app:srcCompat="@drawable/ic_add"
+        app:tint="@color/white" />
+</FrameLayout>
